@@ -1,4 +1,6 @@
-import './globals.css';
+import '@/app/globals.css';
+import clsx from 'clsx';
+import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
@@ -19,7 +21,11 @@ export default function RootLayout({ children }) {
 				<link rel="apple-touch-icon" href="/icon.png"></link>
 				<meta name="theme-color" content="#fff" />
 			</head>
-			<body className={poppins.className}>{children}</body>
+			<body className={clsx(poppins.className, 'relative h-screen w-screen bg-black text-white')}>
+				<Image src="/assets/eclipse-blue.png" alt="Eclipse blue" fill />
+				<Image src="/assets/eclipse-purple.png" alt="Eclipse purple" fill />
+				{children}
+			</body>
 		</html>
 	);
 }
