@@ -5,12 +5,12 @@ import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 export const metadata = {
 	title: 'StockMaster',
-	description: 'Your Freedom Partner',
+	description: 'Your Freedom Partner'
 };
 
 export default function RootLayout({ children }) {
@@ -22,10 +22,19 @@ export default function RootLayout({ children }) {
 				<link rel="apple-touch-icon" href="/icon.png"></link>
 				<meta name="theme-color" content="#fff" />
 			</head>
-			<body className={clsx(poppins.className, 'relative h-screen w-screen bg-black text-white')}>
+			<body
+				className={clsx(
+					poppins.className,
+					'relative h-screen w-screen bg-black text-white'
+				)}
+			>
 				<Image src="/assets/eclipse-blue.png" alt="Eclipse blue" fill />
-				<Image src="/assets/eclipse-purple.png" alt="Eclipse purple" fill />
-				{children}
+				<Image
+					src="/assets/eclipse-purple.png"
+					alt="Eclipse purple"
+					fill
+				/>
+				<div className="relative z-50">{children}</div>
 			</body>
 		</html>
 	);
