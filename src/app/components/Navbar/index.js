@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 import { Menu } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -6,17 +8,40 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
+	const [scrolling, setScrolling] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 50) {
+				setScrolling(true);
+			} else {
+				setScrolling(false);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
 	const logout = () => {
 		console.log('logout');
 	};
 
 	return (
 		<Menu>
-			<div className="flex h-20 w-full items-center justify-between gap-10 p-4">
+			<div
+				className={clsx(
+					'fixed left-0 top-0 z-[100] flex h-20 w-full items-center justify-between gap-10 p-4 transition-all duration-500',
+					scrolling ? 'bg-black' : 'bg-transparent'
+				)}
+			>
 				<div></div>
 				<div className="relative h-full w-full">
 					<Image
-						src="/assets/logo.png"
+						src="/assets/images/logo.png"
 						alt="Logo StockMaster"
 						className="object-contain"
 						fill
