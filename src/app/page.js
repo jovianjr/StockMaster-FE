@@ -1,10 +1,17 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
 
 export default function Home() {
+	const [swiper, setSwiper] = useState(null);
+
 	return (
 		<>
 			<Navbar />
@@ -64,21 +71,53 @@ export default function Home() {
 						</div>
 					</Box>
 
-					<Box className="flex flex-col gap-3 !py-10">
-						<h2 className="text-xl font-semibold">Bearish Flag</h2>
-						<div className="relative aspect-[3/2] w-full">
-							<Image
-								src="/assets/images/placeholder/pattern.png"
-								alt="Golden Dollar Coin"
-								className="object-cover"
-								fill
+					<Box className="flex flex-col gap-6 !px-2 !py-10">
+						<div className="flex items-center gap-1">
+							<ChevronLeftIcon
+								className="h-16 w-12"
+								onClick={() => swiper.slidePrev()}
+							/>
+							<Swiper
+								className="h-full w-full"
+								slidesPerView={1}
+								spaceBetween={30}
+								loop={true}
+								modules={[Autoplay, Navigation]}
+								autoplay={{
+									delay: 2500,
+									disableOnInteraction: false
+								}}
+								onSwiper={s => {
+									setSwiper(s);
+								}}
+							>
+								{['', '', ''].map(val => (
+									<SwiperSlide key={new Date()}>
+										<div className="flex flex-col gap-3">
+											<h2 className="text-xl font-semibold">Bearish Flag</h2>
+											<div className="relative aspect-[3/2] w-full">
+												<Image
+													src="/assets/images/placeholder/pattern.png"
+													alt="Golden Dollar Coin"
+													className="object-cover"
+													fill
+												/>
+											</div>
+											<p className="text-sm font-light">
+												Flag pattern merupakan sebuah pola pada grafik
+												pergerakan harga di pasar yang dipakai untuk
+												memantau ...
+											</p>
+										</div>
+									</SwiperSlide>
+								))}
+							</Swiper>
+							<ChevronRightIcon
+								className="h-16 w-12"
+								onClick={() => swiper.slideNext()}
 							/>
 						</div>
-						<p className="text-sm font-light">
-							Flag pattern merupakan sebuah pola pada grafik pergerakan harga di pasar
-							yang dipakai untuk memantau ...
-						</p>
-						<button className="rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
+						<button className="mx-10 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
 							Pelajari lebih lanjut
 						</button>
 					</Box>
