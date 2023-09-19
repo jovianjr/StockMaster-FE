@@ -66,7 +66,7 @@ export default function Home() {
 								<Image
 									src="/assets/images/homepage/golden-coin.png"
 									alt="Golden Dollar Coin"
-									className="absolute right-0 aspect-square -translate-x-1/3"
+									className="absolute right-0 aspect-square -translate-x-1/4"
 									width={40}
 									height={40}
 								/>
@@ -120,8 +120,8 @@ export default function Home() {
 								onClick={() => swiper.slideNext()}
 							/>
 						</div>
-						<Link href="/learning">
-							<button className="mx-10 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
+						<Link href="/learning" className="mx-10">
+							<button className="w-full rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
 								Pelajari lebih lanjut
 							</button>
 						</Link>
@@ -152,7 +152,7 @@ export default function Home() {
 							})}
 						</div>
 						<Link href="/updates">
-							<button className="mt-2 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
+							<button className="mt-2 w-full rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
 								Lihat Semua
 							</button>
 						</Link>
