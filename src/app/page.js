@@ -8,6 +8,7 @@ import 'swiper/css';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
+import Link from 'next/link';
 
 export default function Home() {
 	const [swiper, setSwiper] = useState(null);
@@ -57,9 +58,11 @@ export default function Home() {
 								Mainkan tiap hari untuk mengukur kemampuanmu dengan peserta lain
 							</p>
 							<span className="relative mt-2 flex items-center">
-								<button className="hover:bg-c-yellow text-c-yellow rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold transition-all hover:text-black">
-									Cek Sekarang
-								</button>
+								<Link href="/games">
+									<button className="hover:bg-c-yellow text-c-yellow rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold transition-all hover:text-black">
+										Cek Sekarang
+									</button>
+								</Link>
 								<Image
 									src="/assets/images/homepage/golden-coin.png"
 									alt="Golden Dollar Coin"
@@ -117,9 +120,11 @@ export default function Home() {
 								onClick={() => swiper.slideNext()}
 							/>
 						</div>
-						<button className="mx-10 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
-							Pelajari lebih lanjut
-						</button>
+						<Link href="/learning">
+							<button className="mx-10 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
+								Pelajari lebih lanjut
+							</button>
+						</Link>
 					</Box>
 
 					<Box className="flex flex-col gap-3 !py-10">
@@ -146,9 +151,11 @@ export default function Home() {
 								);
 							})}
 						</div>
-						<button className="mt-2 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
-							Lihat Semua
-						</button>
+						<Link href="/updates">
+							<button className="mt-2 rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
+								Lihat Semua
+							</button>
+						</Link>
 					</Box>
 				</div>
 			</main>
