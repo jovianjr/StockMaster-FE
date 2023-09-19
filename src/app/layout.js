@@ -28,12 +28,8 @@ export default function RootLayout({ children }) {
 					'relative h-screen w-screen bg-black text-white'
 				)}
 			>
-				<Image src="/assets/eclipse-blue.png" alt="Eclipse blue" fill />
-				<Image
-					src="/assets/eclipse-purple.png"
-					alt="Eclipse purple"
-					fill
-				/>
+				<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
+				<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
 				<div className="relative z-50">{children}</div>
 			</body>
 		</html>
