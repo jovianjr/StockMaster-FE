@@ -34,11 +34,10 @@ export default function Navbar() {
 		<Menu>
 			<div
 				className={clsx(
-					'fixed left-0 top-0 z-[100] flex h-20 w-full items-center justify-between gap-10 p-4 transition-all duration-500',
+					'fixed left-0 top-0 z-[100] flex h-20 w-full items-center justify-center gap-10 border-b border-white/30 px-4 py-2 transition-all duration-500',
 					scrolling ? 'bg-black' : 'bg-transparent'
 				)}
 			>
-				<div></div>
 				<div className="relative h-full w-full">
 					<Image
 						src="/assets/images/logo.png"
@@ -47,7 +46,7 @@ export default function Navbar() {
 						fill
 					/>
 				</div>
-				<Menu.Button>
+				<Menu.Button className="absolute right-4 top-1/2 -translate-y-1/2">
 					<Bars3Icon className="h-8 w-8" />
 				</Menu.Button>
 			</div>
