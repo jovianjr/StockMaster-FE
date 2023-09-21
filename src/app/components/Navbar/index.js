@@ -38,7 +38,7 @@ export default function Navbar() {
 					scrolling ? 'bg-black' : 'bg-transparent'
 				)}
 			>
-				<div className="relative h-full w-full">
+				<div className="relative h-full w-2/5">
 					<Image
 						src="/assets/images/logo.png"
 						alt="Logo StockMaster"
