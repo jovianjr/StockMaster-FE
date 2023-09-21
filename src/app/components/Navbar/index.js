@@ -52,7 +52,7 @@ export default function Navbar() {
 				</Menu.Button>
 			</div>
 			<Menu.Items className="fixed left-0 top-0 z-[1000] h-full w-full px-10 py-12 ">
-				<div className="absolute inset-0 bg-white/20 text-black shadow-[inset_0_2px_30px_0_rgba(255,255,255,0.5)] backdrop-blur-lg"></div>
+				<div className="absolute inset-0 bg-white/10 text-black shadow-[inset_0_2px_30px_0_rgba(255,255,255,0.5)] backdrop-blur-xl"></div>
 				<div className="relative z-10 flex h-full flex-col items-end gap-3">
 					<Menu.Item className="mb-10">
 						{({ close }) => (
