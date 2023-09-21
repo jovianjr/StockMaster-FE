@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Navbar from '@/app/components/Navbar';
 import Button from '@/app/components/Button';
 import Input from '@/app/components/Input';
 
