@@ -18,7 +18,7 @@ const Button = ({ text = 'Button', className = '', onClick = () => {} }) => {
 
 const ButtonContainer = props => {
 	return props.href ? (
-		<Link href={props.href} className="h-full w-full">
+		<Link href={props.href} className="h-fit w-full">
 			<Button {...props} />
 		</Link>
 	) : (

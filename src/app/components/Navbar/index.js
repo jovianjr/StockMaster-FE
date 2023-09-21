@@ -6,6 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/app/components/Button';
 
 export default function Navbar() {
 	const [scrolling, setScrolling] = useState(false);
@@ -51,13 +52,13 @@ export default function Navbar() {
 				</Menu.Button>
 			</div>
 			<Menu.Items className="fixed left-0 top-0 z-[1000] h-full w-full px-10 py-12 ">
-				<div className="absolute inset-0 bg-white/20 text-black shadow-[inset_0_2px_30px_0_rgba(255,255,255,0.5)] backdrop-blur"></div>
+				<div className="absolute inset-0 bg-white/20 text-black shadow-[inset_0_2px_30px_0_rgba(255,255,255,0.5)] backdrop-blur-lg"></div>
 				<div className="relative z-10 flex h-full flex-col items-end gap-3">
 					<Menu.Item className="mb-10">
 						{({ close }) => (
 							<XMarkIcon
 								onClick={close}
-								className="float-right aspect-square w-10 rounded-full bg-white/20 p-2 font-bold text-white"
+								className="float-right aspect-square h-20 rounded-full bg-white/20 p-2 font-bold text-white"
 							/>
 						)}
 					</Menu.Item>
@@ -65,13 +66,12 @@ export default function Navbar() {
 					<CustomMenu text="Learning" href="/learning" />
 					<CustomMenu text="Games" href="/games" />
 					<CustomMenu text="Updates" href="/updates" />
-					<div className="grow"></div>
-					<button
-						className="w-full rounded-lg bg-red-500/30 py-4 text-center font-semibold text-red-500 backdrop-blur"
-						onClick={logout}
-					>
-						Logout
-					</button>
+					<div className="h-full grow"></div>
+					<Button
+						href="/logout"
+						text="logout"
+						className="bg-transparent bg-gradient-to-r from-red-500/50 to-red-500/80 hover:bg-red-700"
+					/>
 				</div>
 			</Menu.Items>
 		</Menu>
@@ -81,15 +81,16 @@ export default function Navbar() {
 const CustomMenu = ({ text = '', href = '', active = false }) => {
 	return (
 		<Menu.Item>
-			<Link
+			<Button
 				href={href}
+				text={text}
 				className={clsx(
-					'w-full rounded-lg py-4 text-center font-semibold backdrop-blur',
-					active ? 'bg-purple-500 font-bold' : 'bg-white/30'
+					'w-full rounded-lg bg-transparent py-4 text-center font-semibold backdrop-blur-lg',
+					active
+						? 'bg-gradient-to-r from-purple-500/30 to-purple-500/70 font-bold'
+						: 'bg-gradient-to-r from-white/20 to-white/50'
 				)}
-			>
-				{text}
-			</Link>
+			/>
 		</Menu.Item>
 	);
 };
