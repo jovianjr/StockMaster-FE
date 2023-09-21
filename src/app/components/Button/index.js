@@ -6,7 +6,7 @@ const Button = ({ text = 'Button', className = '', onClick = () => {} }) => {
 		<button
 			onClick={onClick}
 			className={clsx(
-				'w-full rounded-full px-2 py-3 font-semibold',
+				'w-full rounded-full px-2 py-3 text-sm font-semibold',
 				'bg-c-purple transition-all hover:bg-purple-700',
 				className
 			)}

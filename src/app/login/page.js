@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<div className="h-screen">
 			<Navbar />
-			<main className="flex h-full flex-col items-center justify-center px-10 pt-20">
+			<main className="flex h-full flex-col items-center justify-center px-12 pt-20">
 				<div className="relative h-20 w-2/3 px-5">
 					<Image
 						src="/assets/images/logo.png"
@@ -37,7 +37,7 @@ export default function Home() {
 						<span>OR</span>
 						<hr className="w-1/3" />
 					</div>
-					<button className="flex w-full items-center justify-center gap-4 rounded-full bg-white px-2 py-3 font-semibold text-black">
+					<button className="flex w-full items-center justify-center gap-4 rounded-full bg-white px-2 py-3 text-sm font-semibold text-black">
 						<div className="relative aspect-square w-4">
 							<Image
 								src="/assets/images/logo-google.png"
