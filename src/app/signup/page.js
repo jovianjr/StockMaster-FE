@@ -6,7 +6,7 @@ import Navbar from '@/app/components/Navbar';
 import Button from '@/app/components/Button';
 import Input from '@/app/components/Input';
 
-export default function Home() {
+export default function SignUp() {
 	return (
 		<div className="h-screen">
 			<Navbar />
