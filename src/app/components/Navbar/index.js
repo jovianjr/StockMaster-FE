@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 import { Menu } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { BackwardIcon, Bars3Icon, ChevronLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/app/components/Button';
+import { useRouter } from 'next/navigation';
 
-export default function Navbar() {
+export default function Navbar({ backTo = null }) {
 	const [scrolling, setScrolling] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -39,7 +41,16 @@ export default function Navbar() {
 					scrolling ? 'bg-black' : 'bg-transparent'
 				)}
 			>
-				<div className="relative h-full w-2/5">
+				{backTo ? (
+					<ChevronLeftIcon
+						className="absolute left-4 top-1/2 h-7 w-7 -translate-y-1/2 !p-0"
+						onClick={() => router.push(backTo)}
+					/>
+				) : null}
+				<div
+					className="relative h-full w-2/5 cursor-pointer"
+					onClick={() => router.push('/')}
+				>
 					<Image
 						src="/assets/images/logo.png"
 						alt="Logo StockMaster"
