@@ -21,7 +21,7 @@ export default function Updates() {
 								>
 									<div className="relative aspect-square w-16">
 										<Image
-											src="/assets/images/placeholder/pattern.png"
+											src="/assets/images/placeholder/stock-logo.png"
 											alt=""
 											className="rounded-lg object-cover"
 											fill
