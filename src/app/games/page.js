@@ -1,11 +1,11 @@
 'use client';
+import { ArrowDownIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
 import ListBox from '@/app/components/ListBox';
-import { ArrowDownIcon } from '@heroicons/react/20/solid';
 
 const leaderboardOptions = [
 	{ id: 1, name: 'Harian' },
@@ -28,7 +28,7 @@ export default function Games() {
 						bersainglah dengan pemain lain untuk menduduki peringkat teratas!
 					</p>
 					<div className="relative mt-2 flex w-fit items-center">
-						<Link href="/games">
+						<Link href="/games/play">
 							<button className="rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold text-c-yellow transition-all hover:bg-c-yellow hover:text-black">
 								Mulai Tantangan
 							</button>
