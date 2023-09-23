@@ -17,7 +17,7 @@ export default function Play() {
 					<h2 className="text-xl font-semibold">Bearish Flag</h2>
 					<p className="text-sm">Gambarkan pola pada area board</p>
 				</div>
-				<div className="relative h-full w-full">
+				<div className="relative aspect-square w-full">
 					<button
 						className="absolute right-2 top-2 z-10"
 						onClick={() => canvasRef.current.undo()}
@@ -26,16 +26,18 @@ export default function Play() {
 					</button>
 					<CanvasDraw
 						ref={canvasRef}
+						lazyRadius={0}
 						brushRadius={4}
 						brushColor="#ffffff"
 						className="!bg-c-black !h-full !w-full rounded-lg shadow-[inset_2px_2px_10px_0_rgba(255,255,255,0.15)] backdrop-blur-lg"
 						hideGrid={true}
 					/>
 				</div>
+				<div className="grow"></div>
 				<Button
 					text="selanjutnya"
 					href="/games"
-					onClick={() => console.log(canvasRef.current.getDataURL())}
+					onClick={() => console.log(canvasRef.current.getDataURL('', '', '#000000'))}
 				/>
 			</main>
 		</>
