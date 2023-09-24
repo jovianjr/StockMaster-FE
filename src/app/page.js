@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
@@ -9,9 +9,15 @@ import 'swiper/css';
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
 import Link from 'next/link';
+import { useAuth0 } from '@auth0/auth0-react';
 
 export default function Home() {
 	const [swiper, setSwiper] = useState(null);
+	const { user } = useAuth0();
+
+	useEffect(() => {
+		console.log(user);
+	}, [user]);
 
 	return (
 		<>
@@ -59,7 +65,7 @@ export default function Home() {
 							</p>
 							<span className="relative mt-2 flex items-center">
 								<Link href="/games">
-									<button className="hover:bg-c-yellow text-c-yellow rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold transition-all hover:text-black">
+									<button className="rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold text-c-yellow transition-all hover:bg-c-yellow hover:text-black">
 										Cek Sekarang
 									</button>
 								</Link>
