@@ -5,10 +5,14 @@ import Image from 'next/image';
 import Box from '@/app/components/Box';
 import ButtonContainer from '@/app/components/Button';
 
-export default function ImageDescription({ options = ['', '', ''], answer = null, setAnswer = () => {} }) {
+export default function ImageDescription({
+	options = ['', '', ''],
+	answer = null,
+	setAnswer = () => {}
+}) {
 	return (
 		<>
-			<Box className="relative aspect-[16/9] !h-auto">
+			<Box className="relative aspect-[16/9] !h-auto lg:flex lg:!h-[40vh] lg:justify-center">
 				<div className="relative aspect-[16/9] h-full">
 					<Image
 						src="/assets/images/placeholder/pattern.png"
