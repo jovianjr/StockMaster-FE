@@ -7,6 +7,7 @@ import { Poppins } from 'next/font/google';
 import AuthProvider from '@/app/utils/provider/_authProvider';
 import LoadingProvider from '@/app/utils/provider/_loadingProvider';
 import QueryProvider from '@/app/utils/provider/queryProvider';
+import Profile from './_profile';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -30,14 +31,28 @@ export default function RootLayout({ children }) {
 			<body
 				className={clsx(
 					poppins.className,
-					'relative h-screen w-screen bg-black text-white'
+					'min-w-screen relative min-h-screen bg-black text-white'
 				)}
 			>
-				<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
-				<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
+				<div className="fixed left-0 top-0 h-full w-full">
+					<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
+					<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
+				</div>
 				<AuthProvider>
 					<LoadingProvider>
-						<QueryProvider>{children}</QueryProvider>
+						<QueryProvider>
+							<div className="relative z-50 lg:flex lg:h-full lg:gap-10 lg:px-10 lg:py-24">
+								<div className="w-full lg:sticky lg:top-0 lg:w-[70%]">
+									{children}
+								</div>
+								<div className="hidden h-full w-[30%] lg:flex">
+									<Profile
+										className="lg:w-full lg:pb-0"
+										patternClassName="lg:hidden"
+									/>
+								</div>
+							</div>
+						</QueryProvider>
 					</LoadingProvider>
 				</AuthProvider>
 			</body>

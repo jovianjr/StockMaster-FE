@@ -9,7 +9,7 @@ import Loading from '@/app/components/_loading';
 const LoadingProvider = ({ children }) => {
 	const { isLoading, isAuthenticated, loginWithRedirect, loginWithPopup } = useAuth0();
 	return (
-		<div className="relative z-50">
+		<>
 			<Loading show={isLoading} />
 			{isAuthenticated ? (
 				children
@@ -20,7 +20,7 @@ const LoadingProvider = ({ children }) => {
 					}
 				/>
 			)}
-		</div>
+		</>
 	);
 };
 
