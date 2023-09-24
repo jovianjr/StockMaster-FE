@@ -3,15 +3,21 @@ import { useState } from 'react';
 import Login from '@/app/(auth)/_login';
 import SignUp from '@/app/(auth)/_signup';
 
-export default function Auth({ loginWithPopup }) {
+export default function Auth({ continueWithGoogle = () => {} }) {
 	const [signUp, setSignUp] = useState(false);
 
 	return (
 		<>
 			{signUp ? (
-				<SignUp loginWithPopup={loginWithPopup} login={() => setSignUp(false)} />
+				<SignUp
+					continueWithGoogle={continueWithGoogle}
+					redriectLogin={() => setSignUp(false)}
+				/>
 			) : (
-				<Login loginWithPopup={loginWithPopup} signUp={() => setSignUp(true)} />
+				<Login
+					continueWithGoogle={continueWithGoogle}
+					redriectSignUp={() => setSignUp(true)}
+				/>
 			)}
 		</>
 	);
