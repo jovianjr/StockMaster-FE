@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
 
-import Provider from '@/app/_provider';
+import AuthProvider from '@/app/utils/provider/_authProvider';
+import LoadingProvider from '@/app/utils/provider/_loadingProvider';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -33,7 +34,9 @@ export default function RootLayout({ children }) {
 			>
 				<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
 				<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
-				<Provider>{children}</Provider>
+				<AuthProvider>
+					<LoadingProvider>{children}</LoadingProvider>
+				</AuthProvider>
 			</body>
 		</html>
 	);

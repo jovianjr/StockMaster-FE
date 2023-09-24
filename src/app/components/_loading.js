@@ -10,7 +10,7 @@ const Loading = ({ show = false }) => {
 			enter="transition-opacity ease-linear duration-500"
 			enterFrom="opacity-0"
 			enterTo="opacity-100"
-			leave="transition-opacity ease-linear duration-500 delay-300"
+			leave="transition-opacity ease-linear duration-500"
 			leaveFrom="opacity-100"
 			leaveTo="opacity-0"
 		>
@@ -29,10 +29,13 @@ const Loading = ({ show = false }) => {
 						fill
 					/>
 				</div>
-				<div class="absolute bottom-10 text-center">
-					<div class="flex items-center space-x-2">
+				<div className="absolute bottom-10 text-center">
+					<div className="flex items-center space-x-2">
 						<div aria-label="Loading..." role="status">
-							<svg class="h-5 w-5 animate-spin stroke-white" viewBox="0 0 256 256">
+							<svg
+								className="h-5 w-5 animate-spin stroke-white"
+								viewBox="0 0 256 256"
+							>
 								<line
 									x1="128"
 									y1="32"
@@ -107,7 +110,7 @@ const Loading = ({ show = false }) => {
 								></line>
 							</svg>
 						</div>
-						<span class="text-md font-normal text-white">Loading...</span>
+						<span className="text-md font-normal text-white">Loading...</span>
 					</div>
 				</div>
 			</div>
