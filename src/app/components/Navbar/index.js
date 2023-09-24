@@ -35,10 +35,6 @@ export default function Navbar({ backTo = null }) {
 		};
 	}, []);
 
-	const logout = () => {
-		console.log('logout');
-	};
-
 	return (
 		<>
 			<nav
@@ -74,10 +70,12 @@ export default function Navbar({ backTo = null }) {
 					</Link>
 				</div>
 				<div className="flex gap-6">
-					<button className="flex items-center gap-1  rounded-full border border-red-500 px-4 py-2 text-sm font-normal text-red-500 transition-all hover:bg-red-500 hover:text-white">
-						Sign out
-						<ArrowLeftOnRectangleIcon className="h-5 w-5" />
-					</button>
+					<Link href="/logout">
+						<button className="flex items-center gap-1  rounded-full border border-red-500 px-4 py-2 text-sm font-normal text-red-500 transition-all hover:bg-red-500 hover:text-white">
+							Sign out
+							<ArrowLeftOnRectangleIcon className="h-5 w-5" />
+						</button>
+					</Link>
 				</div>
 			</nav>
 

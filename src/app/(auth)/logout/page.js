@@ -12,13 +12,13 @@ const Logout = () => {
 	const logoutWithRedirect = () =>
 		logout({
 			logoutParams: {
-				returnTo: window.location.origin
+				returnTo: process.env.APP_ORIGIN
 			}
 		});
 
 	return (
-		<main className="flex h-screen flex-col items-center justify-center gap-4 px-12">
-			<div className="relative h-20 w-2/3 px-5">
+		<main className="flex h-screen flex-col items-center justify-center gap-4 px-12 lg:mx-auto lg:w-1/2">
+			<div className="relative h-20 w-2/3 px-5 lg:w-1/4">
 				<Image
 					src="/assets/images/logo.png"
 					alt="Logo StockMaster"
