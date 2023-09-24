@@ -29,7 +29,10 @@ const SwiperLearning = ({ className = '' }) => {
 	return (
 		<Box className={clsx('flex flex-col gap-6 !px-2 !py-10', className)}>
 			<div className="flex items-center gap-1">
-				<ChevronLeftIcon className="h-16 w-12" onClick={() => swiper.slidePrev()} />
+				<ChevronLeftIcon
+					className="h-16 w-12 cursor-pointer"
+					onClick={() => swiper.slidePrev()}
+				/>
 				<Swiper
 					className="h-full w-full"
 					slidesPerView={1}
@@ -37,7 +40,7 @@ const SwiperLearning = ({ className = '' }) => {
 					loop={true}
 					modules={[Autoplay, Navigation]}
 					autoplay={{
-						delay: 2500,
+						delay: 3000,
 						disableOnInteraction: false
 					}}
 					onSwiper={s => {
@@ -69,7 +72,10 @@ const SwiperLearning = ({ className = '' }) => {
 						</SwiperSlide>
 					))}
 				</Swiper>
-				<ChevronRightIcon className="h-16 w-12" onClick={() => swiper.slideNext()} />
+				<ChevronRightIcon
+					className="h-16 w-12 cursor-pointer"
+					onClick={() => swiper.slideNext()}
+				/>
 			</div>
 			<Link href="/learning" className="mx-10">
 				<button className="w-full rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">

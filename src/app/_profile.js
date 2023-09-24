@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useAuth0 } from '@auth0/auth0-react';
 import 'swiper/css';
 
-import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
 
@@ -13,7 +12,6 @@ export default function Profile({ className = '', patternClassName = '' }) {
 
 	return (
 		<>
-			<Navbar />
 			<main className={className}>
 				<div className="relative h-[35vh] w-full overflow-hidden rounded-b-[10%] rounded-t-none lg:h-[35vh] lg:rounded-t-[10%]">
 					<div className="absolute left-0 top-0 z-50 h-full w-full bg-black opacity-60 lg:opacity-0"></div>
