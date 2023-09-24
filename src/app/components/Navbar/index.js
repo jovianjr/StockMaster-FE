@@ -40,7 +40,7 @@ export default function Navbar({ backTo = null }) {
 			<nav
 				className={clsx(
 					'hidden lg:flex',
-					'fixed left-0 top-0 z-[100] h-20 w-full items-center justify-between gap-10 px-24 py-4 transition-all duration-500',
+					'fixed left-0 top-0 z-[100] h-20 w-full items-center justify-between gap-10 px-12 py-4 transition-all duration-500',
 					scrolling ? 'bg-black' : 'bg-transparent'
 				)}
 			>
