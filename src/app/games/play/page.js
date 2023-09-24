@@ -1,42 +1,113 @@
 'use client';
-import { useRef } from 'react';
-import CanvasDraw from 'react-canvas-draw';
-import { ArrowUturnLeftIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react';
 
 import Button from '@/app/components/Button';
 import Navbar from '@/app/components/Navbar';
 
+import TypeBoard from '@/app/games/play/_type_board';
+import TypeDescriptionImage from '@/app/games/play/_type_description-image';
+import TypeDescriptionName from '@/app/games/play/_type_description-name';
+import TypeImageDescription from '@/app/games/play/_type_image-description';
+import TypeImageName from '@/app/games/play/_type_image-name';
+
+const questions = [
+	{
+		type: 'board',
+		options: ['', '', '', '']
+	},
+	{
+		type: 'desc-image',
+		options: ['', '', '', '']
+	},
+	{
+		type: 'desc-name',
+		options: ['', '', '', '']
+	},
+	{
+		type: 'image-desc',
+		options: ['', '', '', '']
+	},
+	{
+		type: 'image-name',
+		options: ['', '', '', '']
+	}
+];
+
 export default function Play() {
-	const canvasRef = useRef();
+	const [choice, setChoice] = useState(new Array(questions.length));
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+	const handleAnswerBoard = val => {
+		hanldeNext();
+		console.log(val);
+	};
+
+	const hanldeNext = val => {
+		setCurrentQuestionIndex(prevState => {
+			if (prevState <= questions.length) return prevState + 1;
+			else return prevState;
+		});
+	};
+
+	const handleAnswer = val => {
+		setChoice(prevState => {
+			const st = [...prevState];
+			st[currentQuestionIndex] = val;
+			console.log(st);
+			return st;
+		});
+	};
 
 	return (
 		<>
 			<Navbar />
 			<main className="flex h-screen w-full flex-col gap-4 px-6 pb-10 pt-28">
-				<div className="flex flex-col gap-1">
-					<h2 className="text-xl font-semibold">Bearish Flag</h2>
-					<p className="text-sm">Gambarkan pola pada area board</p>
-				</div>
-				<div className="relative h-full w-full">
-					<button
-						className="absolute right-2 top-2 z-10"
-						onClick={() => canvasRef.current.undo()}
-					>
-						<ArrowUturnLeftIcon className="h-5 w-5" />
-					</button>
-					<CanvasDraw
-						ref={canvasRef}
-						brushRadius={4}
-						brushColor="#ffffff"
-						className="!bg-c-black !h-full !w-full rounded-lg shadow-[inset_2px_2px_10px_0_rgba(255,255,255,0.15)] backdrop-blur-lg"
-						hideGrid={true}
+				{questions[currentQuestionIndex].type === 'board' ? (
+					<TypeBoard
+						name="Bearish Flag"
+						answer={choice[currentQuestionIndex]}
+						setAnswer={handleAnswerBoard}
 					/>
-				</div>
-				<Button
-					text="selanjutnya"
-					href="/games"
-					onClick={() => console.log(canvasRef.current.getDataURL())}
-				/>
+				) : null}
+
+				{questions[currentQuestionIndex].type === 'desc-image' ? (
+					<TypeDescriptionImage
+						options={['', '', '', '']}
+						answer={choice[currentQuestionIndex]}
+						setAnswer={handleAnswer}
+					/>
+				) : null}
+
+				{questions[currentQuestionIndex].type === 'desc-name' ? (
+					<TypeDescriptionName
+						options={['', '', '', '']}
+						answer={choice[currentQuestionIndex]}
+						setAnswer={handleAnswer}
+					/>
+				) : null}
+
+				{questions[currentQuestionIndex].type === 'image-desc' ? (
+					<TypeImageDescription
+						options={['', '', '', '']}
+						answer={choice[currentQuestionIndex]}
+						setAnswer={handleAnswer}
+					/>
+				) : null}
+
+				{questions[currentQuestionIndex].type === 'image-name' ? (
+					<TypeImageName
+						options={['', '', '', '']}
+						answer={choice[currentQuestionIndex]}
+						setAnswer={handleAnswer}
+					/>
+				) : null}
+
+				{questions[currentQuestionIndex].type !== 'board' ? (
+					<>
+						<div className="grow"></div>
+						<Button text="selanjutnya" onClick={hanldeNext} />
+					</>
+				) : null}
 			</main>
 		</>
 	);
