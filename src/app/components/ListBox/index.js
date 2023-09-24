@@ -21,7 +21,7 @@ const ListBox = ({ className = '', options = defaultOption, onChange = () => {} 
 	return (
 		<Listbox value={selected} onChange={handleChange}>
 			{({ open }) => (
-				<div className="relative mt-1 w-min text-xs text-white/90">
+				<div className="relative mt-1 w-min text-xs text-white/90 lg:text-base">
 					<Listbox.Button
 						className={clsx(
 							'relative cursor-pointer py-2 pl-3 pr-10',
