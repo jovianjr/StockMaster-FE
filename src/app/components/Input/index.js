@@ -15,7 +15,7 @@ const Input = ({
 		<div className="relative h-full w-full">
 			<input
 				className={clsx(
-					'w-full rounded-full px-6 py-3 text-sm',
+					'w-full rounded-full px-6 py-3 text-sm lg:text-base',
 					'bg-transparent bg-gradient-to-r from-white/10 to-white/30 backdrop-blur-lg',
 					'placeholder:font-light placeholder:text-white/50',
 					className

@@ -12,12 +12,12 @@ const LearningDetail = () => {
 	return (
 		<>
 			<Navbar backTo="/learning" />
-			<main className="flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24">
+			<main className="flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:px-20 lg:pt-0">
 				<div className="flex flex-col items-center px-5 py-4">
-					<h2 className="text-2xl font-semibold">Stock Updates</h2>
+					<h2 className="text-2xl font-semibold lg:text-3xl">Stock Updates</h2>
 				</div>
 				<Box className="p-3">
-					<div className="relative aspect-[16/9] w-full">
+					<div className="relative aspect-[16/9] w-full lg:h-[50vh]">
 						<Image
 							src="/assets/images/placeholder/pattern.png"
 							alt=""
@@ -26,7 +26,7 @@ const LearningDetail = () => {
 						/>
 					</div>
 				</Box>
-				<p className="text-justify text-sm font-light">
+				<p className="text-justify text-sm font-light lg:text-base">
 					Pola Bearish Flag terjadi setelah tren naik yang kuat. Pola ini terlihat seperti
 					bendera dengan tiang yang menunjukkan tren naik sebelumnya dan koreksi harga
 					yang relatif pendek yang bergerak secara horizontal atau sedikit turun.

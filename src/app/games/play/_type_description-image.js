@@ -17,7 +17,7 @@ export default function DescriptionImage({
 				semakin sempit. Garis tren atas yang miring naik lebih cepat daripada garis tren
 				bawah yang miring naik.
 			</p>
-			<div className="grid h-full grid-cols-2 gap-2">
+			<div className="grid h-full grid-cols-2 gap-2 lg:h-[60vh]">
 				{options.map(() => (
 					<Box
 						className={clsx('relative !p-1', answer ? '!bg-purple-500/30' : '')}
