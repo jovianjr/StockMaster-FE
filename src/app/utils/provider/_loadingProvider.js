@@ -7,11 +7,11 @@ import Auth from '@/app/(auth)/_auth';
 import Loading from '@/app/components/_loading';
 
 const LoadingProvider = ({ children }) => {
-	const { isLoading, isAuthenticated, loginWithPopup } = useAuth0();
+	const { isLoading, isAuthenticated, loginWithRedirect } = useAuth0();
 	return (
 		<div className="relative z-50">
 			<Loading show={isLoading} />
-			{isAuthenticated ? children : <Auth loginWithPopup={loginWithPopup} />}
+			{isAuthenticated ? children : <Auth continueWithGoogle={loginWithRedirect} />}
 		</div>
 	);
 };

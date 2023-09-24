@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Button from '@/app/components/Button';
 import Input from '@/app/components/Input';
 
-export default function Login({ loginWithPopup, signUp = () => {} }) {
+export default function Login({ continueWithGoogle = () => {}, redriectSignUp = () => {} }) {
 	return (
 		<main className="relative z-50 flex h-screen flex-col items-center justify-center px-12">
 			<div className="relative h-20 w-2/3 px-5">
@@ -20,14 +20,17 @@ export default function Login({ loginWithPopup, signUp = () => {} }) {
 				<Input name="password" placeholder="Password" password />
 				<p className="mt-2 w-full text-center text-xs">
 					Do not have an account ?{' '}
-					<span className="cursor-pointer font-semibold hover:underline" onClick={signUp}>
+					<span
+						className="cursor-pointer font-semibold hover:underline"
+						onClick={redriectSignUp}
+					>
 						Sign up
 					</span>{' '}
 					now
 				</p>
 			</div>
 			<div className="flex w-full flex-col gap-4 pt-12">
-				<Button text="Login" onClick={() => loginWithPopup()} />
+				<Button text="Login" onClick={continueWithGoogle} />
 				<div className="flex w-full items-center justify-center gap-2 text-xs">
 					<hr className="w-1/3" />
 					<span>OR</span>
@@ -35,7 +38,7 @@ export default function Login({ loginWithPopup, signUp = () => {} }) {
 				</div>
 				<button
 					className="flex w-full items-center justify-center gap-4 rounded-full bg-white px-2 py-3 text-sm font-semibold text-black"
-					onClick={() => loginWithPopup()}
+					onClick={continueWithGoogle}
 				>
 					<div className="relative aspect-square w-4">
 						<Image
