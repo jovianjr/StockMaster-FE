@@ -6,7 +6,7 @@ import Navbar from '@/app/components/Navbar';
 import Button from '@/app/components/Button';
 import Box from '@/app/components/Box';
 
-export default function Updates() {
+const LearningDetail = () => {
 	const params = useParams();
 
 	return (
@@ -41,4 +41,6 @@ export default function Updates() {
 			</main>
 		</>
 	);
-}
+};
+
+export default LearningDetail;

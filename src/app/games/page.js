@@ -12,7 +12,7 @@ const leaderboardOptions = [
 	{ id: 2, name: 'Mingguan' }
 ];
 
-export default function Games() {
+const Games = () => {
 	const handleChange = val => {
 		console.log('options: ', val);
 	};
@@ -117,4 +117,6 @@ export default function Games() {
 			</main>
 		</>
 	);
-}
+};
+
+export default Games;

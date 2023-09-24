@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/app/components/Button';
 import { useAuth0 } from '@auth0/auth0-react';
 
-export default function Logout() {
+const Logout = () => {
 	const router = useRouter();
 	const { logout } = useAuth0();
 
@@ -37,4 +37,6 @@ export default function Logout() {
 			</div>
 		</main>
 	);
-}
+};
+
+export default Logout;
