@@ -1,7 +1,10 @@
 import '@/app/globals.css';
+
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
+
+import Provider from '@/app/_provider';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -30,7 +33,7 @@ export default function RootLayout({ children }) {
 			>
 				<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
 				<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
-				<div className="relative z-50">{children}</div>
+				<Provider>{children}</Provider>
 			</body>
 		</html>
 	);

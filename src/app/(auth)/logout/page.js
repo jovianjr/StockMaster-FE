@@ -3,9 +3,18 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import Button from '@/app/components/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
-export default function Logout() {
+const Logout = () => {
 	const router = useRouter();
+	const { logout } = useAuth0();
+
+	const logoutWithRedirect = () =>
+		logout({
+			logoutParams: {
+				returnTo: window.location.origin
+			}
+		});
 
 	return (
 		<main className="flex h-screen flex-col items-center justify-center gap-4 px-12">
@@ -19,7 +28,7 @@ export default function Logout() {
 			</div>
 			<p>Are you sure you want to logout?</p>
 			<div className="flex w-1/2 flex-col gap-3">
-				<Button href="/login" text="Logout" />
+				<Button onClick={() => logoutWithRedirect()} text="Logout" />
 				<Button
 					onClick={() => router.back()}
 					text="Cancel"
@@ -28,4 +37,6 @@ export default function Logout() {
 			</div>
 		</main>
 	);
-}
+};
+
+export default Logout;
