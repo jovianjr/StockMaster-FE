@@ -6,6 +6,7 @@ import { Poppins } from 'next/font/google';
 
 import AuthProvider from '@/app/utils/provider/_authProvider';
 import LoadingProvider from '@/app/utils/provider/_loadingProvider';
+import QueryProvider from '@/app/utils/provider/queryProvider';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -35,7 +36,9 @@ export default function RootLayout({ children }) {
 				<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
 				<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
 				<AuthProvider>
-					<LoadingProvider>{children}</LoadingProvider>
+					<LoadingProvider>
+						<QueryProvider>{children}</QueryProvider>
+					</LoadingProvider>
 				</AuthProvider>
 			</body>
 		</html>

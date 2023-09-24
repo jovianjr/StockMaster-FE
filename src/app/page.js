@@ -1,6 +1,9 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery } from 'react-query';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
@@ -8,8 +11,7 @@ import 'swiper/css';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
-import Link from 'next/link';
-import { useAuth0 } from '@auth0/auth0-react';
+import { getPatterns } from '@/app/utils/services/patterns';
 
 export default function Home() {
 	const [swiper, setSwiper] = useState(null);
@@ -18,6 +20,16 @@ export default function Home() {
 	useEffect(() => {
 		console.log(user);
 	}, [user]);
+
+	const {
+		isLoading: dataPatternIsLoading,
+		isError: dataPatternIsError,
+		data: dataPatternList,
+		isFetching: dataPatternIsFetching
+	} = useQuery({
+		queryKey: ['patterns'],
+		queryFn: () => getPatterns()
+	});
 
 	return (
 		<>
