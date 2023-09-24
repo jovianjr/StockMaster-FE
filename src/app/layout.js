@@ -1,12 +1,13 @@
 'use client';
 import '@/app/globals.css';
+
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Poppins } from 'next/font/google';
-import { useState } from 'react';
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
-import Auth from '@/app/(auth)/_auth';
 import { Transition } from '@headlessui/react';
+
+import Auth from '@/app/(auth)/_auth';
 import Loading from '@/app/_loading';
 
 const poppins = Poppins({
