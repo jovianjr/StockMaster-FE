@@ -10,9 +10,9 @@ const AuthProvider = ({ children }) => {
 			clientId={process.env.AUTH0_CLIENT_ID}
 			authorizationParams={{
 				redirect_uri: process.env.APP_ORIGIN,
-				connection: process.env.NODE_ENV === 'production' ? 'google-oauth2' : ''
+				connection: process.env.NODE_ENV === 'production' ? 'google-oauth2' : '',
+				audience: process.env.AUTH0_AUDIENCE
 			}}
-			useRefreshTokens={true}
 			cacheLocation="localstorage"
 		>
 			{children}
