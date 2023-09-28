@@ -7,7 +7,7 @@ import Navbar from '@/app/components/Navbar';
 const Home = () => {
 	return (
 		<>
-			<Navbar />
+			<Navbar now="home" />
 			<div className="sticky top-24 hidden w-full lg:block ">
 				<SwiperPattern className="!h-full !px-20" />
 			</div>

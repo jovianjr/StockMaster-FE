@@ -19,7 +19,7 @@ const Games = () => {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar now="games" />
 			<main className="flex flex-col gap-4 px-6 pb-10 pt-28 lg:pt-0">
 				<Box className="flex flex-col gap-2 lg:gap-4 lg:px-10 lg:py-12">
 					<h1 className="text-2xl font-semibold lg:text-4xl">Tantangan Harian</h1>

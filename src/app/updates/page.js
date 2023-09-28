@@ -7,7 +7,7 @@ import Navbar from '@/app/components/Navbar';
 export default function Updates() {
 	return (
 		<>
-			<Navbar />
+			<Navbar now="updates" />
 			<main className="px-5 pb-10 pt-24">
 				<div className="flex flex-col gap-4 px-5 py-4">
 					<h2 className="text-2xl font-semibold">Stock Updates</h2>
