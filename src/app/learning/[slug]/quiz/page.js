@@ -126,7 +126,7 @@ const Quiz = ({ params }) => {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar now="learning" />
 			<main className="sticky top-24 flex h-auto min-h-screen w-full flex-col gap-4 px-6 pb-10 pt-28 lg:min-h-[90vh] lg:pt-0">
 				{PatternIsLoading || PatternIsFetching || AttemptIsLoading || AttemptIsFetching ? (
 					<>

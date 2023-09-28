@@ -35,7 +35,7 @@ const LearningDetail = ({ params }) => {
 
 	return (
 		<>
-			<Navbar backTo="/learning" />
+			<Navbar backTo="/learning" now="learning" />
 			<main className="sticky top-20 flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:px-20 lg:pt-0">
 				{dataPatternIsLoading || dataPatternIsFetching ? (
 					<>

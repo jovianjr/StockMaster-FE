@@ -16,7 +16,7 @@ import Link from 'next/link';
 import Button from '@/app/components/Button';
 import { useRouter } from 'next/navigation';
 
-export default function Navbar({ backTo = null }) {
+export default function Navbar({ backTo = null, now = 'home' }) {
 	const [scrolling, setScrolling] = useState(false);
 	const router = useRouter();
 
@@ -56,17 +56,41 @@ export default function Navbar({ backTo = null }) {
 						fill
 					/>
 				</div>
-				<div className="flex gap-24 text-sm">
-					<Link className="transition-all hover:underline" href="/">
+				<div className="flex items-center gap-20 text-sm">
+					<Link
+						className={clsx(
+							'rounded-full px-5 py-1 transition-all hover:underline',
+							now === 'home' ? 'border border-white' : ''
+						)}
+						href="/"
+					>
 						Home
 					</Link>
-					<Link className="transition-all hover:underline" href="/learning">
+					<Link
+						className={clsx(
+							'rounded-full px-5 py-1 transition-all hover:underline',
+							now === 'learning' ? 'border border-white' : ''
+						)}
+						href="/learning"
+					>
 						Learning
 					</Link>
-					<Link className="transition-all hover:underline" href="/games">
+					<Link
+						className={clsx(
+							'rounded-full px-5 py-1 transition-all hover:underline',
+							now === 'games' ? 'border border-white' : ''
+						)}
+						href="/games"
+					>
 						Games
 					</Link>
-					<Link className="transition-all hover:underline" href="/updates">
+					<Link
+						className={clsx(
+							'rounded-full px-5 py-1 transition-all hover:underline',
+							now === 'updates' ? 'border border-white' : ''
+						)}
+						href="/updates"
+					>
 						Updates
 					</Link>
 				</div>

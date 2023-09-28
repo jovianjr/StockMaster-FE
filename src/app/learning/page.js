@@ -21,7 +21,7 @@ export default function Learning() {
 
 	return (
 		<>
-			<Navbar />
+			<Navbar now="learning" />
 			<main className="flex flex-col gap-4 px-6 pb-10 pt-28 lg:gap-6 lg:px-20 lg:pt-0">
 				<h2 className="text-2xl font-semibold lg:text-3xl">List Pola Saham</h2>
 				<div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:gap-5">
