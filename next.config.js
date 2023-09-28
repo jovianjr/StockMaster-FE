@@ -17,7 +17,16 @@ const nextConfig = {
 				destination: `${process.env.API_URL}:path*`
 			}
 		];
+	},
+
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'lh3.googleusercontent.com',
+				pathname: '/**'
+			}
+		]
 	}
 };
-
 module.exports = nextConfig;
