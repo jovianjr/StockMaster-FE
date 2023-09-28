@@ -11,10 +11,6 @@ import { useEffect } from 'react';
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
 
-	useEffect(() => {
-		console.log(user);
-	}, []);
-
 	return (
 		<>
 			<main className={className}>

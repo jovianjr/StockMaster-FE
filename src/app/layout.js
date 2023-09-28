@@ -7,7 +7,7 @@ import { Poppins } from 'next/font/google';
 import AuthProvider from '@/app/utils/provider/_authProvider';
 import LoadingProvider from '@/app/utils/provider/_loadingProvider';
 import QueryProvider from '@/app/utils/provider/queryProvider';
-import Profile from './_profile';
+import Profile from '@/app/_profile';
 
 const poppins = Poppins({
 	subsets: ['latin'],

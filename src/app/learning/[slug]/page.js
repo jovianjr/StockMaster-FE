@@ -1,15 +1,18 @@
 'use client';
+import Link from 'next/link';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { useQuery } from 'react-query';
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useQuery, useMutation } from 'react-query';
+import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
 import Navbar from '@/app/components/Navbar';
 import Button from '@/app/components/Button';
 import Box from '@/app/components/Box';
-import { getPatterns } from '@/app/utils/services/patterns';
+import { createAttempt, getPatterns } from '@/app/utils/services/patterns';
 
 const LearningDetail = ({ params }) => {
+	const router = useRouter();
+
 	const {
 		isLoading: dataPatternIsLoading,
 		isError: dataPatternIsError,
@@ -22,16 +25,18 @@ const LearningDetail = ({ params }) => {
 		queryFn: () => getPatterns(params.slug)
 	});
 
-	useEffect(() => {
-		if (dataPatternError?.response?.data?.message == 'invalid object id') {
-			notFound();
+	const startQuiz = useMutation({
+		mutationKey: ['patterns', params.slug],
+		mutationFn: () => createAttempt(params.slug),
+		onSuccess: () => {
+			router.push(`/learning/${params.slug}/quiz`);
 		}
-	}, [dataPatternError, dataPatternIsError]);
+	});
 
 	return (
 		<>
 			<Navbar backTo="/learning" />
-			<main className="flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:px-20 lg:pt-0">
+			<main className="sticky top-20 flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:px-20 lg:pt-0">
 				{dataPatternIsLoading || dataPatternIsFetching ? (
 					<>
 						<div className="mt-4 h-10 w-full animate-pulse rounded-md bg-white/20"></div>
@@ -39,6 +44,18 @@ const LearningDetail = ({ params }) => {
 						<div className="h-24 w-full animate-pulse rounded-md bg-white/20"></div>
 						<div className="grow"></div>
 						<div className="h-10 w-full animate-pulse rounded-md bg-white/20"></div>
+					</>
+				) : dataPatternError ? (
+					<>
+						<div className="flex h-[80vh] w-full flex-col items-center justify-center gap-4">
+							<p className="text-2xl">Pola tidak ditemukan</p>
+							<Link
+								href={`/learning`}
+								className="cursor-pointer text-sm hover:underline lg:text-base"
+							>
+								kembali
+							</Link>
+						</div>
 					</>
 				) : (
 					<>
@@ -52,7 +69,7 @@ const LearningDetail = ({ params }) => {
 								<Image
 									src={dataPattern?.data?.imageUrl}
 									alt=""
-									className="rounded-lg object-cover"
+									className="rounded-lg object-contain"
 									fill
 								/>
 							</div>
@@ -63,7 +80,20 @@ const LearningDetail = ({ params }) => {
 							</p>
 						))}
 						<div className="grow"></div>
-						<Button href={`/learning/${params.slug}/quiz`} text="Selanjutnya" />
+						<Button
+							onClick={startQuiz.mutateAsync}
+							text={
+								startQuiz.isLoading ? (
+									<span className="flex items-center justify-center gap-2 font-normal">
+										<ArrowPathIcon className="h-4 w-4 animate-spin" />
+										Sedang membuat sesi
+									</span>
+								) : (
+									'Mulai Quiz'
+								)
+							}
+							disabled={startQuiz.isLoading}
+						/>
 					</>
 				)}
 			</main>

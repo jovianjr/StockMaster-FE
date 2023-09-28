@@ -4,11 +4,11 @@ import { useState } from 'react';
 import Button from '@/app/components/Button';
 import Navbar from '@/app/components/Navbar';
 
-import TypeBoard from '@/app/games/play/_type_board';
-import TypeDescriptionImage from '@/app/games/play/_type_description-image';
-import TypeDescriptionName from '@/app/games/play/_type_description-name';
-import TypeImageDescription from '@/app/games/play/_type_image-description';
-import TypeImageName from '@/app/games/play/_type_image-name';
+import TypeBoard from '@/app/(question)/_type_board';
+import TypeDescriptionImage from '@/app/(question)/_type_description-image';
+import TypeDescriptionName from '@/app/(question)/_type_description-name';
+import TypeImageDescription from '@/app/(question)/_type_image-description';
+import TypeImageName from '@/app/(question)/_type_image-name';
 
 const questions = [
 	{

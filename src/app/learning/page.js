@@ -40,6 +40,12 @@ export default function Learning() {
 								></div>
 						  ))
 						: dataPatternList?.data?.map(pattern => {
+								const patternScore =
+									(pattern?.lastAttempt?.totalTrue /
+										(pattern?.lastAttempt?.totalTrue +
+											pattern?.lastAttempt?.totalFalse)) *
+									100;
+
 								return (
 									<Link
 										href={`/learning/${pattern._id}`}
@@ -47,15 +53,15 @@ export default function Learning() {
 										key={pattern._id}
 									>
 										<Box className="relative flex gap-4 overflow-hidden transition-all hover:scale-95 hover:bg-white/30">
-											{pattern.score > 0 ? (
+											{patternScore > 0 ? (
 												<>
 													<div
 														className={clsx(
 															'absolute left-0 top-0 z-0 h-full w-full',
-															pattern.score == 100
+															patternScore >= 75
 																? 'bg-green-500/20'
 																: '',
-															pattern.score < 100 && pattern.score > 0
+															patternScore < 75 && patternScore > 0
 																? 'bg-yellow-500/10'
 																: ''
 														)}
@@ -63,15 +69,15 @@ export default function Learning() {
 													<span
 														className={clsx(
 															'absolute right-3 top-3 rounded-full px-2 py-0.5 text-[0.625rem]',
-															pattern.score == 100
+															patternScore >= 75
 																? 'bg-green-500'
 																: '',
-															pattern.score < 100 && pattern.score > 0
+															patternScore < 75 && patternScore > 0
 																? 'bg-yellow-500'
 																: ''
 														)}
 													>
-														{pattern.score ?? 0}%
+														{patternScore.toFixed() ?? 0}%
 													</span>
 												</>
 											) : null}
