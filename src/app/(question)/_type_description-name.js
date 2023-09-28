@@ -12,7 +12,7 @@ export default function DescriptionName({ question = {}, answer = null, setAnswe
 						key={option.id}
 						text={option.value}
 						className={clsx(
-							'w-full rounded-lg bg-transparent py-4 text-center font-semibold backdrop-blur-lg transition-all hover:bg-white/50',
+							'w-full rounded-lg bg-transparent py-4 text-center font-semibold backdrop-blur-lg transition-all hover:bg-white/20',
 							answer === option.id
 								? 'scale-95 border-2 border-c-yellow bg-gradient-to-r from-c-yellow/40 to-c-yellow/70 font-bold'
 								: 'bg-gradient-to-r from-white/10 to-white/20'

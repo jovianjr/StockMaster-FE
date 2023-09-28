@@ -24,7 +24,7 @@ export default function ImageDescription({ question = {}, answer = null, setAnsw
 						key={option.id}
 						text={option.value}
 						className={clsx(
-							'backdrop-blur-lgtransition-all w-full rounded-lg bg-transparent px-4 py-4 text-center !font-light text-white hover:bg-white/50',
+							'backdrop-blur-lgtransition-all w-full rounded-lg bg-transparent px-4 py-4 text-center !font-light text-white hover:bg-white/20',
 							answer === option.id
 								? 'scale-95 border-2 border-c-yellow bg-gradient-to-r from-c-yellow/40 to-c-yellow/70 font-bold'
 								: 'bg-gradient-to-r from-white/10 to-white/20'

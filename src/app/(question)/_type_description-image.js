@@ -14,7 +14,7 @@ export default function DescriptionImage({ question = {}, answer = null, setAnsw
 						className={clsx(
 							'relative cursor-pointer !p-1 transition-all hover:bg-white/20',
 							answer === option.id
-								? 'scale-95 !border-4 !border-white !bg-white/20'
+								? 'scale-95 !border-4 !border-c-yellow !bg-c-yellow/20'
 								: ''
 						)}
 						key={option.id}
