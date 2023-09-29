@@ -38,9 +38,9 @@ export default function RootLayout({ children }) {
 					<Image src="/assets/images/eclipse-blue.png" alt="Eclipse blue" fill />
 					<Image src="/assets/images/eclipse-purple.png" alt="Eclipse purple" fill />
 				</div>
-				<AuthProvider>
-					<LoadingProvider>
-						<QueryProvider>
+				<QueryProvider>
+					<AuthProvider>
+						<LoadingProvider>
 							<div className="relative z-50 lg:flex lg:h-full lg:gap-10 lg:px-10 lg:py-24">
 								<div className="w-full lg:w-[70%]">{children}</div>
 								<div className="hidden h-full w-[30%] lg:flex">
@@ -50,9 +50,9 @@ export default function RootLayout({ children }) {
 									/>
 								</div>
 							</div>
-						</QueryProvider>
-					</LoadingProvider>
-				</AuthProvider>
+						</LoadingProvider>
+					</AuthProvider>
+				</QueryProvider>
 				<div className="mt-4 hidden w-full bg-black py-2 text-center text-xs lg:block">
 					© Copyright 2023, Kana Team
 				</div>

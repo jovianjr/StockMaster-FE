@@ -2,20 +2,19 @@ import clsx from 'clsx';
 import { Fragment, useState } from 'react';
 
 import { Listbox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const defaultOption = [
-	{ id: 1, name: 'Harian' },
-	{ id: 2, name: 'Mingguan' }
+	{ id: 1, name: 'Harian', value: 'daily' },
+	{ id: 2, name: 'Mingguan', value: 'weekly' }
 ];
 
 const ListBox = ({ className = '', options = defaultOption, onChange = () => {} }) => {
 	const [selected, setSelected] = useState(options[0]);
 
-	const handleChange = value => {
-		setSelected(value);
-		onChange(selected);
+	const handleChange = option => {
+		setSelected(option);
+		onChange(option.value);
 	};
 
 	return (

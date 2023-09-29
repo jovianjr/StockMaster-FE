@@ -13,7 +13,7 @@ export default function ImageDescription({ question = {}, answer = null, setAnsw
 					<Image
 						src={question?.imageUrl}
 						alt="LeaderBoard"
-						className="relative z-10 object-cover"
+						className="relative z-10 object-contain"
 						fill
 					/>
 				</div>
