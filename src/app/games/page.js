@@ -1,14 +1,14 @@
 'use client';
-import { ArrowDownIcon } from '@heroicons/react/20/solid';
-import { useQuery } from 'react-query';
+import { ArrowDownIcon, ArrowPathIcon } from '@heroicons/react/20/solid';
+import { useQuery, useMutation } from 'react-query';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
 import ListBox from '@/app/components/ListBox';
-import { getLeaderBoards } from '@/app/utils/services/games';
+import { getLeaderBoards, getlastGame, postCreateAttempt } from '@/app/utils/services/games';
 
 const leaderboardOptions = [
 	{ id: 1, name: 'Harian', value: 'daily' },
@@ -16,7 +16,9 @@ const leaderboardOptions = [
 ];
 
 const Games = () => {
+	const router = useRouter();
 	const [timeframe, setTimeframe] = useState('daily');
+	const [lastGameDataId, setLastGameDataId] = useState();
 
 	const {
 		isLoading: leaderBoardsIsLoading,
@@ -26,6 +28,23 @@ const Games = () => {
 	} = useQuery({
 		queryKey: ['leaderboards', timeframe],
 		queryFn: () => getLeaderBoards(timeframe)
+	});
+
+	const lastGame = useQuery({
+		queryKey: ['last-game'],
+		queryFn: () => getlastGame(),
+		onSuccess: res => {
+			const data = res.data;
+			setLastGameDataId(data._id);
+		}
+	});
+
+	const startQuiz = useMutation({
+		mutationKey: ['patterns', lastGameDataId],
+		mutationFn: () => postCreateAttempt(lastGameDataId),
+		onSuccess: () => {
+			router.push(`/games/play`);
+		}
 	});
 
 	return (
@@ -38,20 +57,37 @@ const Games = () => {
 						Siapakah yang akan menjadi juara hari ini? Ambil tantangan harian kami dan
 						bersainglah dengan pemain lain untuk menduduki peringkat teratas!
 					</p>
-					<div className="relative mt-2 flex w-fit items-center">
-						<Link href="/games/play">
-							<button className="rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold text-c-yellow transition-all hover:bg-c-yellow hover:text-black lg:px-8 lg:py-2 lg:text-base">
+					{lastGame?.data?.data?.lastAttempt?.isFinished &&
+					lastGame?.data?.data?.lastAttempt?.updatedAt.slice(0, 10) ===
+						new Date().toISOString().slice(0, 10) ? (
+						<div className="relative mt-2 flex w-fit items-center">
+							<span className="w-fit rounded-full py-2 text-xs font-semibold text-green-500 lg:text-sm">
+								Anda sudah menyelesaikan tantangan hari ini
+							</span>
+						</div>
+					) : (
+						<div className="relative mt-2 flex w-fit items-center">
+							<button
+								className="flex items-center gap-2 rounded-full border border-white/20 px-6 py-1 text-[0.625rem] text-xs font-semibold text-c-yellow transition-all hover:bg-c-yellow hover:text-black disabled:cursor-not-allowed disabled:bg-c-yellow/30 disabled:!text-c-yellow lg:px-8 lg:py-2 lg:text-base"
+								onClick={startQuiz.mutateAsync}
+								disabled={startQuiz.isLoading}
+							>
+								{startQuiz.isLoading ? (
+									<span>
+										<ArrowPathIcon className="h-4 w-4 animate-spin" />
+									</span>
+								) : null}
 								Mulai Tantangan
 							</button>
-						</Link>
-						<Image
-							src="/assets/images/homepage/golden-coin.png"
-							alt="Golden Dollar Coin"
-							className="absolute right-0 aspect-square translate-x-1/2"
-							width={48}
-							height={48}
-						/>
-					</div>
+							<Image
+								src="/assets/images/homepage/golden-coin.png"
+								alt="Golden Dollar Coin"
+								className="absolute right-0 top-1/2 aspect-square -translate-y-1/2 translate-x-1/2"
+								width={48}
+								height={48}
+							/>
+						</div>
+					)}
 				</Box>
 				<div className="flex flex-col gap-4">
 					<div className="flex items-center justify-between">
@@ -111,7 +147,7 @@ const Games = () => {
 									</span>
 								</div>
 							</Box>
-							<div className="flex flex-col gap-5 px-4 py-2">
+							<div className="flex flex-col gap-5 px-4 py-2 lg:gap-8">
 								{leaderBoardsList?.data?.leaderBoards?.map((leaderBoard, idx) => {
 									return (
 										<div
@@ -143,7 +179,9 @@ const Games = () => {
 													Lutfi Andriyanto
 												</h2>
 												<p className="text-xs lg:text-sm">
-													mendapatkan 3.457 poin
+													mendapatkan{' '}
+													{leaderBoard?.totalPoints?.toLocaleString('id')}{' '}
+													poin
 												</p>
 											</div>
 											<div className="grow"></div>
