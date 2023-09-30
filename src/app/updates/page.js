@@ -1,13 +1,13 @@
 'use client';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { BrowserView, MobileView } from 'react-device-detect';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Navbar from '@/app/components/Navbar';
 import DetailPage from '@/app/updates/[id]/page';
-import { useQuery } from 'react-query';
-import { getPatterns } from '@/app/utils/services/patterns';
+import { getStocks } from '@/app/utils/services/updates';
 
 export default function Updates() {
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -20,7 +20,7 @@ export default function Updates() {
 	} = useQuery({
 		refetchOnWindowFocus: false,
 		queryKey: ['updates'],
-		queryFn: () => getPatterns()
+		queryFn: () => getStocks()
 	});
 
 	return (
@@ -52,19 +52,19 @@ export default function Updates() {
 							))
 						) : (
 							<>
-								{updatesList?.data?.map((val, idx) => {
+								{updatesList?.data?.map((stock, idx) => {
 									return (
 										<UpdateContainer
-											key={val._id}
+											key={stock._id}
 											className={`group flex cursor-pointer items-center gap-4 rounded-md p-2 ${
 												activeIndex === idx ? 'bg-c-purple' : ''
 											}`}
-											href={`/updates/${val._id}`}
+											href={`/updates/${stock._id}`}
 											onClick={() => setActiveIndex(idx)}
 										>
 											<div className="group relative flex aspect-square w-16 items-center gap-4">
 												<Image
-													src="/assets/images/placeholder/stock-logo.png"
+													src={stock.imageUrl}
 													alt=""
 													className="rounded-lg object-cover"
 													fill
@@ -72,10 +72,10 @@ export default function Updates() {
 											</div>
 											<div className="flex flex-col gap-1">
 												<p className="text-sm font-semibold group-hover:underline lg:text-base">
-													{val.title}
+													{stock.symbol}
 												</p>
 												<p className="text-xs italic text-gray-300 lg:text-sm">
-													{val.title}
+													{stock.name}
 												</p>
 											</div>
 										</UpdateContainer>
