@@ -118,11 +118,31 @@ export default function Updates({ params, id = null }) {
 							{updates?.data?.description}
 						</p>
 
-						<Chart title="Close" options={graphOptions?.price?.close} />
-						<Chart title="Trend" options={graphOptions?.price?.trend} />
-						<Chart title="Seasonal" options={graphOptions?.price?.seasonal} />
-						<Chart title="Residual" options={graphOptions?.price?.residual} />
-						<Chart title="Forecast" options={graphOptions?.forecast} />
+						<Chart
+							title="Close (Penutupan)"
+							options={graphOptions?.price?.close}
+							description="Harga saham pada akhir sesi perdagangan pada suatu hari tertentu. Ini adalah harga terakhir yang dicatat pada hari tersebut."
+						/>
+						<Chart
+							title="Trend (Tren)"
+							options={graphOptions?.price?.trend}
+							description="Komponen dalam analisis time series yang menggambarkan perubahan jangka panjang dalam harga saham. Ini mencerminkan apakah saham tersebut sedang dalam tren naik (bullish) atau tren turun (bearish) dalam jangka waktu tertentu."
+						/>
+						<Chart
+							title="Seasonal (Musiman)"
+							options={graphOptions?.price?.seasonal}
+							description="Komponen yang mengidentifikasi pola berulang dalam perilaku saham seiring dengan musim atau periode tertentu. Ini bisa mencakup faktor-faktor musiman seperti liburan atau peristiwa tahunan."
+						/>
+						<Chart
+							title="Residual (Sisa)"
+							options={graphOptions?.price?.residual}
+							description="Komponen yang mencerminkan fluktuasi acak atau ketidakpastian dalam data harga saham yang tidak dapat dijelaskan oleh tren atau faktor musiman. Ini bisa mencakup peristiwa acak atau berita pasar yang mempengaruhi harga saham."
+						/>
+						<Chart
+							title="Forecast (Peramalan)"
+							options={graphOptions?.forecast}
+							description="Estimasi atau prediksi mengenai nilai masa depan harga saham berdasarkan analisis komponen sebelumnya, yaitu tren, musiman, dan sisa. Ini digunakan untuk membuat keputusan investasi atau perencanaan keuangan."
+						/>
 					</>
 				)}
 			</main>
