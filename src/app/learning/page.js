@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 
 import Navbar from '@/app/components/Navbar';
 import Box from '@/app/components/Box';
@@ -12,7 +12,7 @@ import DetailPage from '@/app/learning/[slug]/page';
 import { getPatterns } from '@/app/utils/services/patterns';
 
 export default function Learning() {
-	const [activeIndex, setActiveIndex] = useState(0);
+	const [activeIndex, setActiveIndex] = useState(isMobile ? null : 0);
 
 	const {
 		isLoading: dataPatternIsLoading,
@@ -29,7 +29,7 @@ export default function Learning() {
 		<>
 			<Navbar now="learning" />
 			<main className="sticky top-24 px-5 pb-10 pt-28 lg:flex lg:pt-0">
-				<div className="flex flex-1 flex-col gap-4 px-6 lg:gap-6">
+				<div className="flex flex-1 flex-col gap-4 px-2 lg:gap-6 lg:px-6">
 					<h2 className="text-2xl font-semibold lg:text-3xl">List Pola Saham</h2>
 					<div className="flex flex-col gap-3 lg:max-h-[80vh] lg:overflow-auto lg:pr-2">
 						{dataPatternIsLoading || dataPatternIsFetching
@@ -56,8 +56,8 @@ export default function Learning() {
 									return (
 										<PatternContainer
 											href={`/learning/${pattern._id}`}
-											className={`flex items-center gap-4 transition-all lg:rounded-lg ${
-												activeIndex === idx ? 'bg-c-purple' : ''
+											className={`flex items-center gap-4 transition-all ${
+												activeIndex === idx ? 'rounded-lg bg-c-purple' : ''
 											}`}
 											key={pattern._id}
 											onClick={() => setActiveIndex(idx)}
