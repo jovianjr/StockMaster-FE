@@ -22,6 +22,7 @@ const SwiperLearning = ({ className = '' }) => {
 		data: patternsList,
 		isFetching: patternsIsFetching
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		queryKey: ['patterns'],
 		queryFn: () => getPatterns()
 	});

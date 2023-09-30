@@ -34,6 +34,7 @@ const Games = () => {
 		isFetching: lastGameIsFetching,
 		error: lastGameError
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		queryKey: ['last-game'],
 		queryFn: () => getlastGame(),
 		onSuccess: res => {
@@ -49,6 +50,7 @@ const Games = () => {
 		isFetching: gameIsFetching,
 		error: gameError
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		enabled: !!lastGame?.data,
 		retry: 3,
 		queryKey: ['game', lastGame?.data?._id],

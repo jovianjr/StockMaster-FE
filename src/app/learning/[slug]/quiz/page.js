@@ -33,6 +33,7 @@ const Quiz = ({ params }) => {
 		isFetching: PatternIsFetching,
 		error: PatternError
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		retry: 3,
 		queryKey: ['patterns-with-question', params.slug],
 		queryFn: () => getPatterns(params.slug + '?questions=1'),
@@ -50,6 +51,7 @@ const Quiz = ({ params }) => {
 		isFetching: AttemptIsFetching,
 		error: AttemptError
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		retry: 3,
 		queryKey: ['pattern-last-attempt', params.slug],
 		queryFn: () => getLastAttempt(params.slug),
