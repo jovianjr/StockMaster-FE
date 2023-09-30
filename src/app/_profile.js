@@ -3,13 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery } from 'react-query';
+import { isMobile } from 'react-device-detect';
 import 'swiper/css';
 
 import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
 import { getStocks } from '@/app/utils/services/updates';
 import { getProfile } from '@/app/utils/services/profile';
-import { isMobile } from 'react-device-detect';
 
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
