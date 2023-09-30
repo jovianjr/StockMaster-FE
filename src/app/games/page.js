@@ -175,10 +175,10 @@ const Games = () => {
 										<span className="text-2xl font-semibold">
 											{myLeaderboard?.rank}
 										</span>
-										<span className="flex text-xs text-red-500">
+										{/* <span className="flex text-xs text-red-500">
 											<ArrowDownIcon className="h-4 w-4" />
 											<span>12</span>
-										</span>
+										</span> */}
 									</div>
 								</Box>
 							) : null}
