@@ -7,20 +7,20 @@ import 'swiper/css';
 
 import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
-import { getPatterns } from '@/app/utils/services/patterns';
+import { getStocks } from '@/app/utils/services/updates';
 
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
 
 	const {
-		isLoading: patternsIsLoading,
-		isError: patternsIsError,
-		data: patternsList,
-		isFetching: patternsIsFetching
+		isLoading: updatesIsLoading,
+		isError: updatesIsError,
+		data: updatesList,
+		isFetching: updatesIsFetching
 	} = useQuery({
 		refetchOnWindowFocus: false,
-		queryKey: ['patterns'],
-		queryFn: () => getPatterns()
+		queryKey: ['updates'],
+		queryFn: () => getStocks()
 	});
 
 	return (
@@ -88,7 +88,7 @@ export default function Profile({ className = '', patternClassName = '' }) {
 					<Box className="flex flex-col gap-3 !py-10">
 						<h2 className="text-xl font-semibold">Stock Updates</h2>
 						<div className="flex flex-col gap-2">
-							{patternsIsLoading || patternsIsFetching ? (
+							{updatesIsLoading || updatesIsFetching ? (
 								[
 									'loading-1',
 									'loading-12',
@@ -109,9 +109,9 @@ export default function Profile({ className = '', patternClassName = '' }) {
 								))
 							) : (
 								<>
-									{patternsList?.data?.map(val => {
+									{updatesList?.data?.map(stock => {
 										return (
-											<Link href={`/updates/${val._id}`} key={val._id}>
+											<Link href={`/updates/${stock._id}`} key={stock._id}>
 												<div className="group flex items-center gap-4">
 													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
 														<Image
@@ -123,10 +123,10 @@ export default function Profile({ className = '', patternClassName = '' }) {
 													</div>
 													<div className="flex flex-col gap-1">
 														<p className="text-sm font-semibold group-hover:underline lg:text-base">
-															Apple
+															{stock.symbol}
 														</p>
 														<p className="text-xs italic text-gray-300 lg:text-sm">
-															apple .inc
+															{stock.name}
 														</p>
 													</div>
 												</div>
