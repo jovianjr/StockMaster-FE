@@ -65,7 +65,7 @@ export default function Updates() {
 											<div className="group relative flex aspect-square w-16 items-center gap-4">
 												<Image
 													src={stock.imageUrl}
-													alt=""
+													alt={`${stock.name} image`}
 													className="rounded-lg object-cover"
 													fill
 												/>

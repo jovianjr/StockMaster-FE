@@ -23,7 +23,7 @@ export default function DescriptionImage({ question = {}, answer = null, setAnsw
 						<div className="relative h-full w-full">
 							<Image
 								src={option?.value}
-								alt="LeaderBoard"
+								alt="Options image"
 								className="relative z-10 object-contain p-4"
 								fill
 							/>

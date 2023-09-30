@@ -74,7 +74,7 @@ const LearningDetail = ({ params, id = null }) => {
 							<div className="relative aspect-[16/9] w-full lg:aspect-square lg:h-[50vh]">
 								<Image
 									src={dataPattern?.data?.imageUrl}
-									alt=""
+									alt={`${dataPattern?.data?.title} image`}
 									className="rounded-lg object-contain"
 									fill
 								/>

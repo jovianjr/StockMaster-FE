@@ -108,7 +108,7 @@ const Games = () => {
 										? '/assets/images/homepage/alarm.png'
 										: '/assets/images/homepage/golden-coin.png'
 								}
-								alt="Golden Dollar Coin"
+								alt="Challenge Icon"
 								fill
 							/>
 						</div>
@@ -156,7 +156,7 @@ const Games = () => {
 												myLeaderboard?.user?.picture ??
 												'/assets/images/placeholder/profile.png'
 											}
-											alt="LeaderBoard"
+											alt="My profile picture"
 											className="relative z-10 object-cover"
 											fill
 										/>
@@ -195,7 +195,7 @@ const Games = () => {
 														leaderBoard.user?.picture ??
 														'/assets/images/placeholder/profile.png'
 													}
-													alt="LeaderBoard"
+													alt={`${leaderBoard.user?.name} profile picture`}
 													className="relative z-10 rounded-full object-cover"
 													fill
 												/>
@@ -203,7 +203,7 @@ const Games = () => {
 													{leaderBoard.rank <= 2 ? (
 														<Image
 															src="/assets/images/games/crown.png"
-															alt="LeaderBoard"
+															alt="crown"
 															className="relative rounded-full object-contain"
 															fill
 														/>

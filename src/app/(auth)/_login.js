@@ -43,7 +43,7 @@ export default function Login({ continueWithGoogle = () => {}, redriectSignUp = 
 					<div className="relative aspect-square w-4 overflow-hidden rounded-full">
 						<Image
 							src="/assets/images/logo-google.png"
-							alt="Logo StockMaster"
+							alt="Logo Google"
 							className="object-contain"
 							fill
 						/>

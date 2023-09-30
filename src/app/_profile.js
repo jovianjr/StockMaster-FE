@@ -137,7 +137,7 @@ export default function Profile({ className = '', patternClassName = '' }) {
 													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
 														<Image
 															src="/assets/images/placeholder/pattern.png"
-															alt="Golden Dollar Coin"
+															alt={`${stock.name} logo`}
 															className="object-cover"
 															fill
 														/>
