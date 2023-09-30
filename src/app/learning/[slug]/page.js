@@ -10,8 +10,9 @@ import Button from '@/app/components/Button';
 import Box from '@/app/components/Box';
 import { createAttempt, getPatterns } from '@/app/utils/services/patterns';
 
-const LearningDetail = ({ params }) => {
+const LearningDetail = ({ params, id = null }) => {
 	const router = useRouter();
+	const slug = params?.slug ?? id;
 
 	const {
 		isLoading: dataPatternIsLoading,
@@ -22,22 +23,26 @@ const LearningDetail = ({ params }) => {
 	} = useQuery({
 		refetchOnWindowFocus: false,
 		retry: 3,
-		queryKey: ['patterns', params.slug],
-		queryFn: () => getPatterns(params.slug)
+		queryKey: ['patterns', slug],
+		queryFn: () => getPatterns(slug)
 	});
 
 	const startQuiz = useMutation({
-		mutationKey: ['patterns', params.slug],
-		mutationFn: () => createAttempt(params.slug),
+		mutationKey: ['patterns', slug],
+		mutationFn: () => createAttempt(slug),
 		onSuccess: () => {
-			router.push(`/learning/${params.slug}/quiz`);
+			router.push(`/learning/${slug}/quiz`);
 		}
 	});
 
 	return (
 		<>
 			<Navbar backTo="/learning" now="learning" />
-			<main className="sticky top-20 flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:px-20 lg:pt-0">
+			<main
+				className={`sticky top-20 flex min-h-screen flex-col items-center justify-center gap-5 px-10 pb-10 pt-24 lg:min-h-[80vh] lg:justify-start lg:px-20 lg:pt-0 ${
+					id ? 'lg:max-h-[80vh] lg:overflow-auto' : ''
+				}`}
+			>
 				{dataPatternIsLoading || dataPatternIsFetching ? (
 					<>
 						<div className="mt-4 h-10 w-full animate-pulse rounded-md bg-white/20"></div>
@@ -66,7 +71,7 @@ const LearningDetail = ({ params }) => {
 							</h2>
 						</div>
 						<Box className="p-3">
-							<div className="relative aspect-[16/9] w-full lg:h-[50vh]">
+							<div className="relative aspect-[16/9] w-full lg:aspect-square lg:h-[50vh]">
 								<Image
 									src={dataPattern?.data?.imageUrl}
 									alt=""

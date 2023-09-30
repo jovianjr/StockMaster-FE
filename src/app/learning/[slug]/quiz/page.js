@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { useQuery, useMutation } from 'react-query';
+import { isMobile } from 'react-device-detect';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
 import Button from '@/app/components/Button';
@@ -143,7 +144,7 @@ const Quiz = ({ params }) => {
 						<div className="flex h-[80vh] w-full flex-col items-center justify-center gap-4">
 							<p className="text-2xl font-semibold">Sesi tidak ditemukan</p>
 							<Link
-								href={`/learning/${params.slug}`}
+								href={isMobile ? `/learning/${params.slug}` : '/learning'}
 								className="cursor-pointer text-sm hover:underline lg:text-base"
 							>
 								kembali
@@ -188,7 +189,10 @@ const Quiz = ({ params }) => {
 								: 'Anda belum lulus quiz ini'}
 						</p>
 						<div className="mt-10 w-40">
-							<Button href={`/learning/${params.slug}`} text="kembali" />
+							<Button
+								href={isMobile ? `/learning/${params.slug}` : '/learning'}
+								text="kembali"
+							/>
 						</div>
 					</div>
 				) : (
