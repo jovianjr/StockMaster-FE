@@ -30,10 +30,11 @@ StockMaster Merupakan sebuah aplikasi berbasis website yang membantu anda untuk 
     - mode production:``npm run build && npm start`` atau ``yarn build && yarn start``
     - mode develop: ``npm run dev`` atau ``yarn run dev``
 
-## Anggota Tim
-
-| Nama                          | NIM                |
-| ----------------------------- | ------------------ |
-| Alphonsus Jovian Joy Reynaldo | 20/460539/TK/51128 |
-| Aulia Nur Fajriyah            | 20/456360/TK/50490 |
-| Lutfi Andriyanto              | 20/456370/TK/50500 |
+## Profil Tim
+|                               |                               |                    |   
+| ----------------------------- | ----------------------------- |--------------------|
+| **Nama Tim**                  | Kana                          |                    |
+| **Nama Produk**               | StockMaster                   |                    |
+| **Anggota**                   | Alphonsus Jovian Joy Reynaldo | 20/460539/TK/51128 |
+|                               | Aulia Nur Fajriyah            | 20/456360/TK/50490 |
+|                               | Lutfi Andriyanto              | 20/456370/TK/50500 |
