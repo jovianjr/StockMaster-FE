@@ -86,10 +86,14 @@ export default function Updates() {
 					</div>
 				</div>
 				<BrowserView className="hidden flex-[2] py-4 lg:flex lg:flex-col">
-					<h2 className="text-2xl font-semibold lg:text-4xl">
-						{updatesList?.data[activeIndex]?.title}
-					</h2>
-					<DetailPage id={updatesList?.data[activeIndex]?._id} />
+					{!!updatesList ? (
+						<>
+							<h2 className="text-2xl font-semibold lg:text-4xl">
+								{updatesList?.data[activeIndex]?.title}
+							</h2>
+							<DetailPage id={updatesList?.data[activeIndex]?._id} />
+						</>
+					) : null}
 				</BrowserView>
 			</main>
 		</>
