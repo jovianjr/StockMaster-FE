@@ -9,6 +9,7 @@ import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
 import { getStocks } from '@/app/utils/services/updates';
 import { getProfile } from '@/app/utils/services/profile';
+import { isMobile } from 'react-device-detect';
 
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
@@ -132,7 +133,12 @@ export default function Profile({ className = '', patternClassName = '' }) {
 								<>
 									{updatesList?.data?.map(stock => {
 										return (
-											<Link href={`/updates/${stock._id}`} key={stock._id}>
+											<Link
+												href={
+													isMobile ? `/updates/${stock._id}` : '/updates'
+												}
+												key={stock._id}
+											>
 												<div className="group flex items-center gap-4">
 													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
 														<Image
