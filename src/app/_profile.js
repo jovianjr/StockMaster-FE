@@ -136,7 +136,7 @@ export default function Profile({ className = '', patternClassName = '' }) {
 												<div className="group flex items-center gap-4">
 													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
 														<Image
-															src="/assets/images/placeholder/pattern.png"
+															src={stock.imageUrl}
 															alt={`${stock.name} logo`}
 															className="object-cover"
 															fill
