@@ -13,8 +13,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Countdown from 'react-countdown';
 
 const leaderboardOptions = [
-	{ id: 1, name: 'Harian', value: 'daily' },
-	{ id: 2, name: 'Mingguan', value: 'weekly' }
+	{ id: 2, name: 'Mingguan', value: 'weekly' },
+	{ id: 1, name: 'Harian', value: 'daily' }
 ];
 
 const Games = () => {
@@ -30,6 +30,7 @@ const Games = () => {
 		data: leaderBoardsList,
 		isFetching: leaderBoardsIsFetching
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		queryKey: ['leaderboards', timeframe],
 		queryFn: () => getLeaderBoards(timeframe)
 	});
@@ -100,17 +101,17 @@ const Games = () => {
 								'Mulai Tantangan'
 							)}
 						</button>
-						<Image
-							src={
-								isFinished
-									? '/assets/images/homepage/alarm.png'
-									: '/assets/images/homepage/golden-coin.png'
-							}
-							alt="Golden Dollar Coin"
-							className="absolute right-0 top-1/2 aspect-square -translate-y-1/2 translate-x-1/2"
-							width={48}
-							height={48}
-						/>
+						<div className="absolute right-0 top-1/2 aspect-square w-10 -translate-y-1/2 translate-x-1/2 lg:w-12">
+							<Image
+								src={
+									isFinished
+										? '/assets/images/homepage/alarm.png'
+										: '/assets/images/homepage/golden-coin.png'
+								}
+								alt="Golden Dollar Coin"
+								fill
+							/>
+						</div>
 					</div>
 				</Box>
 				<div className="flex flex-col gap-4">
@@ -132,12 +133,12 @@ const Games = () => {
 									>
 										<div className="relative aspect-square w-12 overflow-hidden rounded-full bg-white/20 lg:w-16"></div>
 										<div className="flex flex-col gap-2">
-											<span className="h-5 w-40 rounded-md bg-white/20 lg:rounded-lg"></span>
-											<span className="h-4 w-60 rounded-md bg-white/20 lg:rounded-lg"></span>
+											<span className="h-3 w-20 rounded-md bg-white/20 lg:h-5 lg:w-40 lg:rounded-lg"></span>
+											<span className="h-2 w-28 rounded-md bg-white/20 lg:h-4 lg:w-60 lg:rounded-lg"></span>
 										</div>
 										<div className="grow"></div>
 										<div className="flex flex-col items-center justify-center gap-1">
-											<span className="aspect-square w-20 rounded-md bg-white/20 lg:rounded-lg"></span>
+											<span className="aspect-square w-12 rounded-md bg-white/20 lg:w-20 lg:rounded-lg"></span>
 										</div>
 									</div>
 								)
