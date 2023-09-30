@@ -137,35 +137,40 @@ const Games = () => {
 						<div className="h-10 w-full animate-pulse rounded-lg bg-white/20 lg:h-16"></div>
 					</>
 				) : gameError ? (
-					<>
-						<div className="flex h-[80vh] w-full flex-col items-center justify-center gap-4">
-							<p className="text-2xl font-semibold">Sesi tidak ditemukan</p>
-							<Link
-								href={`/games`}
-								className="cursor-pointer text-sm hover:underline lg:text-base"
-							>
-								kembali
-							</Link>
-						</div>
-					</>
-				) : lastGame?.data?.lastAttempt?.isFinished ? (
 					<div className="flex h-[80vh] flex-col items-center justify-center">
-						<div className="relative mb-4 aspect-square h-[35vh]">
+						<div className="relative mb-4 aspect-square h-[25vh]">
 							<Image
-								src={'/assets/images/games/task-done.png'}
+								src={'/assets/images/games/robot-sad.png'}
 								alt="Game Task Done Icon"
 								className="object-contain"
 								fill
 							/>
 						</div>
-						<p>
-							Anda telah menyelesaikan game ini dengan{' '}
-							<span className="text-lg font-semibold lg:text-xl">
-								{lastGame?.data?.lastAttempt?.totalPoints} Poin
-							</span>
-						</p>
-						<div className="mt-10 w-40">
-							<Button href={`/games`} text="kembali" />
+						<div className="flex flex-col items-center justify-center gap-1 font-semibold">
+							Sesi tidak ditemukan
+						</div>
+						<div className="mt-10 w-40 lg:w-80">
+							<Button href={`/games`} text="Kembali" />
+						</div>
+					</div>
+				) : lastGame?.data?.lastAttempt?.isFinished ? (
+					<div className="flex h-[80vh] flex-col items-center justify-center gap-4">
+						<div className="relative mb-4 aspect-square h-[25vh]">
+							<Image
+								src={'/assets/images/games/complete.png'}
+								alt="Game Task Done Icon"
+								className="object-contain"
+								fill
+							/>
+						</div>
+						<div className="flex flex-col items-center justify-center gap-1">
+							<h1 className="text-3xl font-semibold">Selesai 👏🏻</h1>
+							<p className="text-xs font-semibold">
+								+ {lastGame?.data?.lastAttempt?.totalPoints} Poin
+							</p>
+						</div>
+						<div className="mt-10 w-40 lg:w-80">
+							<Button href={`/games`} text="Periksa Peringkat" />
 						</div>
 					</div>
 				) : (
