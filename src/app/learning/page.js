@@ -15,6 +15,7 @@ export default function Learning() {
 		data: dataPatternList,
 		isFetching: dataPatternIsFetching
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		queryKey: ['patterns'],
 		queryFn: () => getPatterns()
 	});

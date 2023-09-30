@@ -20,6 +20,7 @@ const LearningDetail = ({ params }) => {
 		isFetching: dataPatternIsFetching,
 		error: dataPatternError
 	} = useQuery({
+		refetchOnWindowFocus: false,
 		retry: 3,
 		queryKey: ['patterns', params.slug],
 		queryFn: () => getPatterns(params.slug)
