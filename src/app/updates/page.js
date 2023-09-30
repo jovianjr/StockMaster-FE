@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, isMobile } from 'react-device-detect';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ import DetailPage from '@/app/updates/[id]/page';
 import { getStocks } from '@/app/utils/services/updates';
 
 export default function Updates() {
-	const [activeIndex, setActiveIndex] = useState(0);
+	const [activeIndex, setActiveIndex] = useState(isMobile ? null : 0);
 
 	const {
 		isLoading: updatesIsLoading,
