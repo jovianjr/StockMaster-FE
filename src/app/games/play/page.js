@@ -143,7 +143,7 @@ const Games = () => {
 						<div className="relative mb-4 aspect-square h-[25vh]">
 							<Image
 								src={'/assets/images/games/robot-sad.png'}
-								alt="Game Task Done Icon"
+								alt="Not passed icon"
 								className="object-contain"
 								fill
 							/>
@@ -160,7 +160,7 @@ const Games = () => {
 						<div className="relative mb-4 aspect-square h-[25vh]">
 							<Image
 								src={'/assets/images/games/complete.png'}
-								alt="Game Task Done Icon"
+								alt="Passed icon"
 								className="object-contain"
 								fill
 							/>

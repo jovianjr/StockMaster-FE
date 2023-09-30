@@ -12,7 +12,7 @@ export default function ImageName({ question = {}, answer = null, setAnswer = ()
 				<div className="relative aspect-[16/9] h-full">
 					<Image
 						src={question?.imageUrl}
-						alt="LeaderBoard"
+						alt="Question Image"
 						className="relative z-10 object-contain"
 						fill
 					/>

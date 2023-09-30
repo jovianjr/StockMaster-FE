@@ -162,7 +162,7 @@ const Quiz = ({ params }) => {
 										? '/assets/images/games/done.png'
 										: '/assets/images/games/robot-sad.png'
 								}
-								alt="Profile Cover"
+								alt="Finished Icon"
 								className="object-contain"
 								fill
 							/>
@@ -176,7 +176,7 @@ const Quiz = ({ params }) => {
 										? '/assets/images/games/good-job.png'
 										: '/assets/images/games/oh-no.png'
 								}
-								alt="Profile Cover"
+								alt="Finished Icon"
 								className="object-contain"
 								fill
 							/>

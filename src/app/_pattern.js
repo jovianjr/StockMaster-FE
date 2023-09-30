@@ -71,7 +71,7 @@ const SwiperLearning = ({ className = '' }) => {
 										<div className="relative aspect-[3/2] w-full lg:aspect-[2/1]">
 											<Image
 												src={pattern.imageUrl}
-												alt="Golden Dollar Coin"
+												alt={`${pattern.title} Pattern image`}
 												className="object-contain"
 												fill
 											/>

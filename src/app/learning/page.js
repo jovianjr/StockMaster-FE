@@ -96,7 +96,7 @@ export default function Learning() {
 												<div className="relative z-10 aspect-square w-1/3">
 													<Image
 														src={pattern.imageUrl}
-														alt=""
+														alt={`${pattern.title} image`}
 														className="rounded-lg object-cover"
 														fill
 													/>

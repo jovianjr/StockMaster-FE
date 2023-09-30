@@ -15,7 +15,7 @@ export default function Play({ name = 'Pola X', image = null, setAnswer = () => 
 					<div className="relative aspect-square h-20 lg:h-28">
 						<Image
 							src={image}
-							alt="Question image"
+							alt={`${name} image`}
 							className="relative z-10 object-contain"
 							fill
 						/>

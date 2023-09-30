@@ -8,9 +8,21 @@ import 'swiper/css';
 import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
 import { getStocks } from '@/app/utils/services/updates';
+import { getProfile } from '@/app/utils/services/profile';
 
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
+
+	const {
+		isLoading: profileIsLoading,
+		isError: profileIsError,
+		data: profileData,
+		isFetching: profileIsFetching
+	} = useQuery({
+		refetchOnWindowFocus: false,
+		queryKey: ['profile'],
+		queryFn: () => getProfile()
+	});
 
 	const {
 		isLoading: updatesIsLoading,
@@ -46,9 +58,18 @@ export default function Profile({ className = '', patternClassName = '' }) {
 					</div>
 					<div className="flex flex-col items-center py-4">
 						<h1 className="text-2xl font-semibold">{user?.name}</h1>
-						<span className="text-xs italic text-gray-300">
-							mendapatkan <b className="text-c-yellow">3.457 poin</b> minggu ini
-						</span>
+						{profileIsLoading || profileIsFetching ? (
+							<span className="h-4 w-20 animate-pulse rounded-full bg-white/20 lg:w-40"></span>
+						) : (
+							<span className="text-xs italic text-gray-300">
+								mendapatkan{' '}
+								<b className="text-c-yellow">
+									{profileData?.data?.totalPointsThisWeek?.toLocaleString('id')}{' '}
+									poin
+								</b>{' '}
+								minggu ini
+							</span>
+						)}
 					</div>
 				</div>
 				<div className="flex flex-col gap-4 px-5 py-4 lg:px-0 lg:py-0">
@@ -116,7 +137,7 @@ export default function Profile({ className = '', patternClassName = '' }) {
 													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
 														<Image
 															src="/assets/images/placeholder/pattern.png"
-															alt="Golden Dollar Coin"
+															alt={`${stock.name} logo`}
 															className="object-cover"
 															fill
 														/>

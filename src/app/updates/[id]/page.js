@@ -109,7 +109,7 @@ export default function Updates({ params, id = null }) {
 						<div className="relative aspect-square min-h-[30vh] w-2/3">
 							<Image
 								src={updates?.data?.imageUrl}
-								alt=""
+								alt={`${updates?.data?.name} image`}
 								className="rounded-lg object-contain"
 								fill
 							/>
