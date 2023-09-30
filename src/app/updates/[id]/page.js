@@ -78,7 +78,7 @@ export default function Updates({ params, id = null }) {
 	return (
 		<>
 			<Navbar backTo="/updates" now="updates" />
-			<main className="relative flex h-full w-full flex-col items-center justify-start gap-5 px-10 pb-10 pt-24 lg:max-h-[80vh] lg:overflow-auto lg:pt-0">
+			<main className="relative flex h-full w-full flex-col items-center justify-start gap-5 px-6 pb-10 pt-24 lg:max-h-[80vh] lg:overflow-auto lg:px-10 lg:pt-0">
 				{updatesIsLoading || updatesIsFetching ? (
 					<>
 						<div className="flex w-full flex-col items-center gap-1 px-10 py-4 lg:w-1/2">

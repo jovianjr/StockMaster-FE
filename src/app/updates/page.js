@@ -27,7 +27,7 @@ export default function Updates() {
 		<>
 			<Navbar now="updates" />
 			<main className="sticky top-24 px-5 pb-10 pt-24 lg:flex lg:pt-0">
-				<div className="flex flex-col gap-4 px-5 py-4 lg:flex-1">
+				<div className="flex flex-col gap-4 py-4 lg:flex-1 lg:px-5">
 					<h2 className="text-2xl font-semibold lg:text-4xl">Stock Updates</h2>
 					<div className="flex flex-col gap-2 px-2 lg:max-h-[80vh] lg:overflow-auto">
 						{updatesIsLoading || updatesIsFetching ? (

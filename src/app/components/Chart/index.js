@@ -21,7 +21,7 @@ export default function Chart({
 			</div>
 			<div
 				className={clsx(
-					'flex h-[40vh] w-full items-center justify-center rounded-md bg-white lg:rounded-lg',
+					'flex h-[30vh] w-full items-center justify-center rounded-md bg-white lg:h-[40vh] lg:rounded-lg',
 					className
 				)}
 			>
