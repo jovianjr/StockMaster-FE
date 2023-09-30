@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img src="https://github.com/jovianjr/StockMaster-FE/assets/55451337/40cd8c6f-3dd7-44b8-b4db-df7e1ea3ddcf"  />
+</div>
 
-## Getting Started
+## Deskripsi
 
-First, run the development server:
+<p align="justify">
+StockMaster Merupakan sebuah aplikasi berbasis website yang membantu anda untuk belajar mengenai pola - pola yang ada pada saham dengan mengusung tema gamifikasi atau berbasis game yang diharapkan dapat membantu anda untuk belajar dengan efektif karena kita dituntut untuk ikut serta andil didalamnya.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Repository Terkait
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Frontend Repo: https://github.com/jovianjr/StockMaster-FE
+- Backend Repo: https://github.com/lutfiandri/stockmaster-be
+- ML Repo: https://github.com/lutfiandri/stockmaster-be-ml
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Link
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Frontend: https://stockmaster.vercel.app/
+- Backend: https://stockmaster-be.vercel.app/
+- ML: https://stockmaster-be-ml.vercel.app/
+- Prototype: [klik disini](https://www.figma.com/proto/5uesuW9rqdW832gAVRJJvm/IFEST-Stock-Master?page-id=4%3A481&type=design&node-id=44-287&viewport=334%2C479%2C0.1&t=gq2FYZhVMYVzC0eB-1&scaling=min-zoom&starting-point-node-id=44%3A287&mode=design)
 
-## Learn More
+## Panduan instalasi
+1. Clone repository ini
+2. Pastikan terdapat nodejs pada komputer
+3. Install dengan menggunakan ``npm install`` atau ``yarn``
+4. Isi file .env dengan env yang telah diberikan pada google drive
+5. Jalankan aplikasi
+    - mode production:``npm run build && npm start`` atau ``yarn build && yarn start``
+    - mode develop: ``npm run dev`` atau ``yarn run dev``
 
-To learn more about Next.js, take a look at the following resources:
+## Anggota Tim
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Nama                          | NIM                |
+| ----------------------------- | ------------------ |
+| Alphonsus Jovian Joy Reynaldo | 20/460539/TK/51128 |
+| Aulia Nur Fajriyah            | 20/456360/TK/50490 |
+| Lutfi Andriyanto              | 20/456370/TK/50500 |
