@@ -2,14 +2,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery } from 'react-query';
 import 'swiper/css';
 
 import Box from '@/app/components/Box';
 import SwiperPattern from '@/app/_pattern';
-import { useEffect } from 'react';
+import { getPatterns } from '@/app/utils/services/patterns';
 
 export default function Profile({ className = '', patternClassName = '' }) {
 	const { user } = useAuth0();
+
+	const {
+		isLoading: patternsIsLoading,
+		isError: patternsIsError,
+		data: patternsList,
+		isFetching: patternsIsFetching
+	} = useQuery({
+		refetchOnWindowFocus: false,
+		queryKey: ['patterns'],
+		queryFn: () => getPatterns()
+	});
 
 	return (
 		<>
@@ -76,34 +88,53 @@ export default function Profile({ className = '', patternClassName = '' }) {
 					<Box className="flex flex-col gap-3 !py-10">
 						<h2 className="text-xl font-semibold">Stock Updates</h2>
 						<div className="flex flex-col gap-2">
-							{[
-								'updates-1',
-								'updates-12',
-								'updates-13',
-								'updates-14',
-								'updates-15'
-							].map(val => {
-								return (
-									<div className="flex items-center gap-4" key={val}>
-										<div className="relative aspect-square w-16">
-											<Image
-												src="/assets/images/placeholder/pattern.png"
-												alt="Golden Dollar Coin"
-												className="object-cover"
-												fill
-											/>
-										</div>
-										<div className="flex flex-col gap-1">
-											<p className="text-sm font-semibold lg:text-base">
-												Apple
-											</p>
-											<p className="text-xs italic text-gray-300 lg:text-sm">
-												apple .inc
-											</p>
+							{patternsIsLoading || patternsIsFetching ? (
+								[
+									'loading-1',
+									'loading-12',
+									'loading-13',
+									'loading-14',
+									'loading-15'
+								].map(val => (
+									<div
+										className="flex animate-pulse items-center gap-4"
+										key={val}
+									>
+										<div className="aspect-square w-12 rounded-md bg-white/20 lg:w-16 lg:rounded-lg"></div>
+										<div className="flex flex-col gap-2">
+											<div className="h-4 w-20 rounded-md bg-white/20 lg:h-5 lg:w-20 lg:rounded-lg"></div>
+											<div className="h-2 w-28 rounded-md bg-white/20 lg:h-4 lg:w-32 lg:rounded-lg"></div>
 										</div>
 									</div>
-								);
-							})}
+								))
+							) : (
+								<>
+									{patternsList?.data?.map(val => {
+										return (
+											<Link href={`/updates/${val._id}`} key={val._id}>
+												<div className="group flex items-center gap-4">
+													<div className="relative aspect-square w-16 overflow-hidden rounded-lg">
+														<Image
+															src="/assets/images/placeholder/pattern.png"
+															alt="Golden Dollar Coin"
+															className="object-cover"
+															fill
+														/>
+													</div>
+													<div className="flex flex-col gap-1">
+														<p className="text-sm font-semibold group-hover:underline lg:text-base">
+															Apple
+														</p>
+														<p className="text-xs italic text-gray-300 lg:text-sm">
+															apple .inc
+														</p>
+													</div>
+												</div>
+											</Link>
+										);
+									})}
+								</>
+							)}
 						</div>
 						<Link href="/updates">
 							<button className="mt-2 w-full rounded-full border border-white/50 px-4 py-2 text-xs transition-all hover:bg-white hover:text-black">
